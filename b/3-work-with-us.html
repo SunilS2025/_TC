@@ -11,7 +11,7 @@
             --clariem-navy: #014184;
             --clariem-blue: #5CBAE5;
             --clariem-grey-blue: #3C6370;
-            --clariem-gold: #FAC360;
+            --clariem-gold: #F59E0B;
             --navy-dark: #012859;
             --white: #FFFFFF;
             --text-primary: #1E293B;
@@ -34,9 +34,9 @@
         .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--clariem-navy);}
         
         /* Hero */
-        .hero {background: linear-gradient(135deg, #E8F4FB 0%, var(--clariem-blue) 50%, #E8F4FB 100%); padding: 6rem 2.5rem 5rem; text-align: center;}
+        .hero {background: linear-gradient(135deg, #E8F4FB 0%, #A8DBF0 100%); padding: 6rem 2.5rem 5rem; text-align: center;}
         .hero-content {max-width: 1000px; margin: 0 auto;}
-        .hero-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--white); color: var(--clariem-navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--clariem-gold); box-shadow: 0 4px 12px rgba(250, 195, 96, 0.3);}
+        .hero-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--white); color: var(--clariem-navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--clariem-gold); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
         .hero h1 {font-size: 4rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.1;}
         .hero h1 .highlight {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
         .hero-subtitle {font-size: 1.5rem; color: var(--text-primary); max-width: 800px; margin: 0 auto; line-height: 1.6;}
@@ -44,7 +44,7 @@
         /* Container */
         .container {max-width: 1320px; margin: 0 auto; padding: 5rem 2.5rem;}
         .section-header {text-align: center; margin-bottom: 4.5rem;}
-        .section-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--clariem-gold); color: var(--navy-dark); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(250, 195, 96, 0.3);}
+        .section-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--clariem-gold); color: var(--navy-dark); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
         h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
         h2 .gold-highlight {color: var(--clariem-gold);}
         .section-description {font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.7;}
@@ -65,15 +65,94 @@
         .form-container h2 {text-align: center; margin-bottom: 1rem;}
         .form-container .intro-text {text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem; line-height: 1.7;}
         
-        form {max-width: 700px; margin: 0 auto;}
-        .form-group {margin-bottom: 1.5rem;}
-        label {display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--navy-dark); font-size: 1rem;}
-        input, textarea, select {width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s; background: var(--white);}
-        input:focus, textarea:focus, select:focus {outline: none; border-color: var(--clariem-navy);}
-        textarea {min-height: 120px; resize: vertical;}
-        .form-row {display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;}
-        .submit-btn {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); color: var(--white); padding: 1.2rem 2.5rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 1rem; box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
-        .submit-btn:hover {box-shadow: 0 8px 30px rgba(1, 65, 132, 0.4); transform: translateY(-2px);}
+        /* ========================================
+           HUBSPOT FORM STYLING - KEEP THIS!
+           ======================================== */
+        #hubspot-form-container {
+            min-height: 400px;
+        }
+
+        #hubspot-form-container .hs-form {
+            max-width: 100%;
+        }
+
+        #hubspot-form-container .hs-form-field {
+            margin-bottom: 1.5rem;
+        }
+
+        #hubspot-form-container label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--navy-dark);
+            font-size: 1rem;
+        }
+
+        #hubspot-form-container input,
+        #hubspot-form-container textarea,
+        #hubspot-form-container select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            background: var(--white);
+        }
+
+        #hubspot-form-container input:focus,
+        #hubspot-form-container textarea:focus,
+        #hubspot-form-container select:focus {
+            outline: none;
+            border-color: var(--clariem-navy);
+        }
+
+        #hubspot-form-container textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #hubspot-form-container .hs-button {
+            background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);
+        }
+
+        #hubspot-form-container .hs-button:hover {
+            box-shadow: 0 8px 30px rgba(1, 65, 132, 0.4);
+            transform: translateY(-2px);
+        }
+
+        #hubspot-form-container .hs-error-msgs {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+        }
+
+        #hubspot-form-container .hs-error-msg {
+            color: #EF4444;
+            font-size: 0.9rem;
+        }
+
+        #hubspot-form-container .submitted-message {
+            background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.15) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--clariem-gold);
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--navy-dark);
+        }
 
         /* FAQ Section */
         .faq-section {padding: 6rem 2.5rem; background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);}
@@ -82,7 +161,7 @@
         .faq-item:hover {box-shadow: 0 8px 30px rgba(0,0,0,0.08);}
         .faq-question {padding: 2rem 2.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;}
         .faq-question h3 {font-size: 1.3rem; font-weight: 700; color: var(--navy-dark); margin: 0; flex: 1;}
-        .faq-toggle {width: 36px; height: 36px; background: linear-gradient(135deg, #E8F4FB 0%, rgba(250, 195, 96, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy-dark); font-weight: 800; font-size: 1.3rem; transition: all 0.3s; flex-shrink: 0;}
+        .faq-toggle {width: 36px; height: 36px; background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy-dark); font-weight: 800; font-size: 1.3rem; transition: all 0.3s; flex-shrink: 0;}
         .faq-item:hover .faq-toggle {background: var(--clariem-gold); color: var(--white);}
         .faq-item.active .faq-toggle {transform: rotate(45deg); background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); color: var(--white);}
         .faq-answer {max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;}
@@ -114,14 +193,44 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {display: none;}
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-top: 2px solid var(--clariem-gold);
+            }
+
+            nav ul.mobile-menu-open {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul a {
+                display: block;
+                padding: 1rem 2.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav ul a:hover {
+                background: var(--background);
+            }
+
             .mobile-menu-btn {display: block;}
             .hero {padding: 4rem 1.5rem 3rem;}
             .hero h1 {font-size: 2.5rem;}
             .hero-subtitle {font-size: 1.2rem;}
             h2 {font-size: 2rem;}
             .container, .form-container {padding: 3rem 1.5rem;}
-            .form-row {grid-template-columns: 1fr;}
             .footer-content {grid-template-columns: 1fr;}
         }
 
@@ -185,78 +294,48 @@
         </div>
     </div>
 
-    <!-- Section 3: Form -->
+    <!-- Section 3: Contact Form -->
     <div class="form-section">
         <div class="form-container">
             <h2>Ask for a <span class="gold-highlight">Conversation</span></h2>
             <p class="intro-text">Share your context below and we'll reach out within 24 hours to schedule a meaningful conversation about your AI leadership journey.</p>
             
-            <form id="contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first-name">First Name *</label>
-                        <input type="text" id="first-name" name="first-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name *</label>
-                        <input type="text" id="last-name" name="last-name" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Work Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="company">Company *</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Job Title *</label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="industry">Industry *</label>
-                    <select id="industry" name="industry" required>
-                        <option value="">Select your industry</option>
-                        <option value="pharma">Pharmaceutical / Biopharma</option>
-                        <option value="medtech">Medical Devices / Diagnostics</option>
-                        <option value="cpg">Consumer Packaged Goods</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="interest">Primary Interest *</label>
-                    <select id="interest" name="interest" required>
-                        <option value="">What are you most interested in?</option>
-                        <option value="workshop">2-Day AI Leadership Workshop</option>
-                        <option value="bootcamp">30-Day AI Adoption Bootcamp</option>
-                        <option value="momentum">90-Day Transformation Momentum</option>
-                        <option value="planning">Annual Planning & Strategy Execution</option>
-                        <option value="operating-model">AI Operating Models & Job Redesign</option>
-                        <option value="coe">AI Center of Excellence</option>
-                        <option value="exploratory">Exploratory Conversation</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="context">Share Your Context</label>
-                    <textarea id="context" name="context" placeholder="What challenges are you facing? What outcomes are you seeking? What matters to YOU, right now?"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Request a Conversation</button>
-            </form>
+            <!-- ============================================================
+                 HUBSPOT FORM INTEGRATION AREA
+                 ============================================================
+                 
+                 INSTRUCTIONS:
+                 1. Create your form in HubSpot (see HUBSPOT-QUICK-START.md)
+                 2. Copy the HubSpot embed code 
+                 3. Paste it inside the <div id="hubspot-form-container"> below
+                 4. Delete this comment block
+                 
+                 Your HubSpot embed code should look like:
+                 
+                 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                 <script>
+                   hbspt.forms.create({
+                     region: "na1",
+                     portalId: "YOUR_PORTAL_ID",
+                     formId: "YOUR_FORM_ID"
+                   });
+                 </script>
+                 
+                 ============================================================ -->
+            
+            <div id="hubspot-form-container">
+                <!-- PASTE YOUR HUBSPOT EMBED CODE HERE -->
+                
+                <!-- Placeholder message - remove when adding HubSpot -->
+                <p style="text-align: center; padding: 3rem; color: #64748B; font-style: italic;">
+                    HubSpot form will appear here once integrated.<br>
+                    See <strong>HUBSPOT-QUICK-START.md</strong> for step-by-step instructions.
+                </p>
+            </div>
+            
+            <!-- ============================================================
+                 END HUBSPOT FORM INTEGRATION AREA
+                 ============================================================ -->
         </div>
     </div>
 
@@ -396,11 +475,30 @@
             }
         }
 
-        // Form handling (placeholder - replace with actual HubSpot integration)
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest! We will contact you within 24 hours.');
-            // Add actual form submission logic here
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                
+                // Close menu when clicking a link
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
         });
     </script>
 </body>

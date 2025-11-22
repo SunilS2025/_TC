@@ -16,7 +16,7 @@
             --clariem-navy: #014184;
             --clariem-blue: #5CBAE5;
             --clariem-grey-blue: #3C6370;
-            --clariem-gold: #FAC360;
+            --clariem-gold: #F59E0B;
             --navy-dark: #012859;
             --white: #FFFFFF;
             --text-primary: #1E293B;
@@ -111,7 +111,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #E8F4FB 0%, var(--clariem-blue) 50%, #E8F4FB 100%);
+            background: linear-gradient(135deg, #E8F4FB 0%, #A8DBF0 100%);
             padding: 6rem 2.5rem 5rem;
             position: relative;
             overflow: hidden;
@@ -147,7 +147,7 @@
             letter-spacing: 0.08em;
             margin-bottom: 1.5rem;
             border: 2px solid var(--clariem-gold);
-            box-shadow: 0 4px 12px rgba(250, 195, 96, 0.3);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
 
         .hero h1 {
@@ -246,7 +246,7 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 1.2rem;
-            box-shadow: 0 4px 12px rgba(250, 195, 96, 0.3);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
 
         h2 {
@@ -410,7 +410,7 @@
             color: var(--text-primary);
             text-align: center;
             padding: 2.5rem;
-            background: linear-gradient(135deg, #E8F4FB 0%, rgba(250, 195, 96, 0.1) 100%);
+            background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.1) 100%);
             border-radius: 16px;
             border: 2px solid var(--clariem-gold);
         }
@@ -630,7 +630,7 @@
 
         .cta-buttons .btn-primary:hover {
             background: var(--white);
-            box-shadow: 0 8px 30px rgba(250, 195, 96, 0.4);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
         }
 
         .cta-buttons .btn-secondary {
@@ -749,6 +749,34 @@
         @media (max-width: 768px) {
             nav ul {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-top: 2px solid var(--clariem-gold);
+            }
+
+            nav ul.mobile-menu-open {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul a {
+                display: block;
+                padding: 1rem 2.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav ul a:hover {
+                background: var(--background);
             }
 
             .mobile-menu-btn {
@@ -1150,5 +1178,33 @@
             © 2025 Clariem Inc. All rights reserved.
         </div>
     </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                
+                // Close menu when clicking a link
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
