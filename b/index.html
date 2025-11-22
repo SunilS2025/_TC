@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform Copilot | AI Leadership Operating System™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --clariem-blue: #3C6370;
+            --clariem-blue-light: #93B9C5;
+            --clariem-blue-pale: #D4E3E8;
+            --sky-blue: #0EA5E9;
+            --navy: #1E3A8A;
+            --navy-dark: #1E293B;
+            --gold: #F59E0B;
+            --gold-light: #FCD34D;
+            --white: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --background: #F8FAFC;
+            --border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--clariem-blue-pale);
+        }
+
+        nav {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--clariem-blue);
+        }
+
+        nav a.active {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--gold) 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--clariem-blue-pale) 0%, var(--clariem-blue-light) 50%, var(--clariem-blue-pale) 100%);
+            padding: 6rem 2.5rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+
+        .hero-content {
+            max-width: 1320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: var(--white);
+            color: var(--navy);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            max-width: 950px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(60, 99, 112, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(60, 99, 112, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--clariem-blue);
+            border: 2px solid var(--clariem-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--clariem-blue);
+            color: var(--white);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.6rem 1.3rem;
+            background: linear-gradient(135deg, var(--clariem-blue-pale) 0%, var(--clariem-blue-light) 100%);
+            color: var(--navy);
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--clariem-blue);
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+
+        h2 .gold-highlight {
+            color: var(--gold);
+        }
+
+        .section-description {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 950px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Audience Callout */
+        .audience-callout {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            padding: 2.5rem 3rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .audience-callout h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 1rem;
+        }
+
+        .audience-callout p {
+            font-size: 1.2rem;
+            color: var(--navy);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        /* Challenge Section */
+        .challenge-section {
+            background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--gold) 100%);
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(60, 99, 112, 0.15);
+            border-color: var(--clariem-blue);
+        }
+
+        .challenge-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 8px rgba(60, 99, 112, 0.2));
+        }
+
+        .challenge-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy-dark);
+        }
+
+        .challenge-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Framework Section */
+        .framework-section {
+            background: var(--white);
+        }
+
+        .pyramid-container {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
+            border-radius: 20px;
+            border: 3px solid var(--clariem-blue);
+            box-shadow: 0 12px 40px rgba(60, 99, 112, 0.1);
+        }
+
+        .pyramid-image {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .framework-layers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .layer-card {
+            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            border-left: 5px solid var(--clariem-blue);
+            transition: all 0.3s;
+        }
+
+        .layer-card:hover {
+            border-left-width: 8px;
+            border-left-color: var(--gold);
+            transform: translateX(5px);
+            box-shadow: 0 8px 30px rgba(60, 99, 112, 0.15);
+        }
+
+        .layer-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(60, 99, 112, 0.3);
+        }
+
+        .layer-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--navy-dark);
+        }
+
+        .layer-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Tensions Section */
+        .tensions-section {
+            background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);
+        }
+
+        .tensions-intro {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--clariem-blue-pale) 0%, rgba(245, 158, 11, 0.1) 100%);
+            border-radius: 20px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .tensions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .tension-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 3px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tension-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--navy) 100%);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .tension-card:hover {
+            border-color: var(--clariem-blue);
+            box-shadow: 0 15px 50px rgba(60, 99, 112, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .tension-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tension-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(60, 99, 112, 0.3);
+        }
+
+        .tension-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            line-height: 1.3;
+        }
+
+        .tension-sides {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .tension-side {
+            padding: 1.5rem;
+            background: var(--background);
+            border-radius: 12px;
+            border: 2px solid var(--border);
+        }
+
+        .tension-side h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .tension-side p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .vs-symbol {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        /* Last tension card spanning full width */
+        .tension-card.full-width {
+            grid-column: 1 / -1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            padding: 5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(60, 99, 112, 0.3) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .cta-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-description {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--clariem-blue-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .challenge-grid,
+            .framework-layers {
+                grid-template-columns: 1fr;
+            }
+
+            .tensions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="transform-copilot-logo-trans.png" alt="Transform Copilot">
+            </a>
+            <ul>
+                <li><a href="index.html" class="active">Why Transform Copilot</a></li>
+                <li><a href="2-how-we-help.html">How We Help Leaders</a></li>
+                <li><a href="3-work-with-us.html">Work With Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Getting Real with AI</span>
+            <h1>From AI Aspiration to <span class="highlight">AI Execution</span></h1>
+            <p class="hero-subtitle">Transform Copilot empowers leaders in large enterprises to gain AI advantage—buy back your time, anticipate better, navigate change with confidence, and sleep better at night. AI-Accelerated Outcome-Based Consulting designed specifically for leaders, not just their teams.</p>
+            <div class="hero-cta">
+                <a href="2-how-we-help.html" class="btn btn-primary">
+                    Explore How We Help
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="3-work-with-us.html" class="btn btn-secondary">Schedule a Conversation</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="challenge" class="challenge-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The AI Leadership Challenge</span>
+                <h2>Three Critical Imperatives for <span class="gold-highlight">Leaders</span></h2>
+                <p class="section-description">Leaders face unique challenges that require specific capabilities—different from those needed by execution teams. Success demands mastering three distinct leadership imperatives.</p>
+            </div>
+
+            <div class="audience-callout">
+                <h3>Built for Large Enterprise Leaders</h3>
+                <p>Directors, Senior Directors, Executive Directors, and VPs leading teams or functions in complex organizations. This is AI advantage designed for your leadership remit.</p>
+            </div>
+
+            <div class="challenge-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">⚡</div>
+                    <h3>1. Leaders Must Take Charge</h3>
+                    <p>Provide guidance or AI will take over, unannounced. Staying ignorant or choosing to ignore AI is no longer an option—the leadership mandate demands active engagement and strategic direction.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">🎯</div>
+                    <h3>2. Focus on Signal, Not Noise</h3>
+                    <p>Know what to ignore. Skip the basics, filter out speculation and hype. Leaders need frameworks to identify what actually matters for their organization—right now.</p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">⚖️</div>
+                    <h3>3. Master the Five Leadership Tensions</h3>
+                    <p>Build expertise in navigating critical tradeoffs: Opportunity vs. Focus, Automation vs. Humanity, Exploration vs. Stability, Data vs. Judgment, and Fragmentation vs. Integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="framework" class="framework-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Framework</span>
+                <h2>The AI Leadership <span class="gold-highlight">Operating System™</span></h2>
+                <p class="section-description">Clariem's proprietary AI-LOS™ provides practical, battle-tested frameworks for navigating AI transformation across three integrated leadership layers—from foundational capabilities through applied execution to frontier possibilities.</p>
+            </div>
+
+            <div class="pyramid-container">
+                <img src="2025_11_20_AI_leadership_Pyramid.png" alt="AI Leadership Operating System™" class="pyramid-image">
+            </div>
+
+            <div class="framework-layers">
+                <div class="layer-card">
+                    <div class="layer-number">1</div>
+                    <h3>Foundational Leadership</h3>
+                    <p>Build enduring organizational foundations—governance, culture, talent development, and change management capabilities that support sustainable AI transformation beyond individual projects.</p>
+                </div>
+
+                <div class="layer-card">
+                    <div class="layer-number">2</div>
+                    <h3>Applied AI Leadership</h3>
+                    <p>Navigate the five core tensions of practical AI implementation: opportunity vs. focus, automation vs. humanity, exploration vs. stability, data vs. judgment, and fragmentation vs. integration.</p>
+                </div>
+
+                <div class="layer-card">
+                    <div class="layer-number">3</div>
+                    <h3>Frontier Leadership</h3>
+                    <p>Position your organization for emerging AI possibilities while managing current operations—balancing investment in proven capabilities with strategic exploration of transformative potential.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tensions" class="tensions-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The Five Tensions</span>
+                <h2>Applied AI Leadership <span class="gold-highlight">in Practice</span></h2>
+                <p class="section-description">Successful AI leaders don't eliminate tensions—they learn to navigate them with clarity. Our "My Questions, My Answers" methodology, supported by curated leadership dialogs and LMS-backed learning, gives you the frameworks to find your organization's optimal balance.</p>
+            </div>
+
+            <div class="tensions-intro">
+                <strong>These aren't problems to solve, they're ongoing organizational dynamics to manage.</strong> Through white-glove executive treatment and our curated asset library, you'll develop practical expertise in navigating each tension for your specific context.
+            </div>
+
+            <div class="tensions-grid">
+                <div class="tension-card">
+                    <div class="tension-header">
+                        <div class="tension-badge">I</div>
+                        <h3>Opportunity vs Focus</h3>
+                    </div>
+                    <div class="tension-sides">
+                        <div class="tension-side">
+                            <h4>Opportunity</h4>
+                            <p>Blue sky thinking, explore diverse possibilities, maximize learning</p>
+                        </div>
+                        <div class="vs-symbol">⇄</div>
+                        <div class="tension-side">
+                            <h4>Focus</h4>
+                            <p>Deliver value with business case, concentrate resources, scale proven wins</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tension-card">
+                    <div class="tension-header">
+                        <div class="tension-badge">II</div>
+                        <h3>Automation vs Humanity</h3>
+                    </div>
+                    <div class="tension-sides">
+                        <div class="tension-side">
+                            <h4>Automation</h4>
+                            <p>Leverage AI for efficiency, speed, consistency at scale</p>
+                        </div>
+                        <div class="vs-symbol">⇄</div>
+                        <div class="tension-side">
+                            <h4>Humanity</h4>
+                            <p>Preserve judgment, creativity, relationships, ethical oversight</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tension-card">
+                    <div class="tension-header">
+                        <div class="tension-badge">III</div>
+                        <h3>Exploration vs Stability</h3>
+                    </div>
+                    <div class="tension-sides">
+                        <div class="tension-side">
+                            <h4>Exploration</h4>
+                            <p>Experiment rapidly, test new approaches, embrace uncertainty</p>
+                        </div>
+                        <div class="vs-symbol">⇄</div>
+                        <div class="tension-side">
+                            <h4>Stability</h4>
+                            <p>Maintain operations, minimize risk, ensure compliance and reliability</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tension-card">
+                    <div class="tension-header">
+                        <div class="tension-badge">IV</div>
+                        <h3>Data vs Judgment</h3>
+                    </div>
+                    <div class="tension-sides">
+                        <div class="tension-side">
+                            <h4>Data</h4>
+                            <p>Let AI insights and analytics drive decisions, optimize algorithmically</p>
+                        </div>
+                        <div class="vs-symbol">⇄</div>
+                        <div class="tension-side">
+                            <h4>Judgment</h4>
+                            <p>Apply experience, context, intuition and strategic wisdom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tension-card full-width">
+                    <div class="tension-header">
+                        <div class="tension-badge">V</div>
+                        <h3>Fragmentation vs Integration</h3>
+                    </div>
+                    <div class="tension-sides">
+                        <div class="tension-side">
+                            <h4>Fragmentation</h4>
+                            <p>Scattered tools, disconnected processes, wasted investments across silos</p>
+                        </div>
+                        <div class="vs-symbol">⇄</div>
+                        <div class="tension-side">
+                            <h4>Integration</h4>
+                            <p>Institutionalization with clear value stacking, coherent ecosystem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Lead with AI Advantage?</h2>
+            <p>Discover how Transform Copilot helps you navigate AI leadership tensions—building your second brain, buying back time, and leading with confidence through practical frameworks and white-glove executive support</p>
+            <div class="cta-buttons">
+                <a href="2-how-we-help.html" class="btn btn-primary">
+                    See How We Help Leaders
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="3-work-with-us.html" class="btn btn-secondary">Start a Conversation</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="transform-copilot-logo.jpeg" alt="Transform Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—AI-Accelerated Outcome-Based Consulting that blends consultant expertise, proprietary IP, and AI acceleration.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Transform Copilot</a></li>
+                    <li><a href="2-how-we-help.html">How We Help Leaders</a></li>
+                    <li><a href="3-work-with-us.html">Work With Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Clariem Suite</h4>
+                <ul class="footer-links">
+                    <li><a href="http://www.launchcopilot.ai">Launch Copilot</a></li>
+                    <li><a href="http://www.clariem.com">About Clariem</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Clariem Inc. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
