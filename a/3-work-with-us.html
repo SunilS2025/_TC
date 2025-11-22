@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us | Transform Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --clariem-blue: #3C6370; --clariem-blue-light: #93B9C5; --clariem-blue-pale: #D4E3E8;
+            --sky-blue: #0EA5E9; --navy: #1E3A8A; --navy-dark: #1E293B;
+            --gold: #F59E0B; --gold-light: #FCD34D;
+            --white: #FFFFFF; --text-primary: #1E293B; --text-secondary: #64748B;
+            --background: #F8FAFC; --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--clariem-blue-pale);}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {display: flex; align-items: center; text-decoration: none;}
+        .logo img {height: 50px; width: auto;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; font-size: 0.95rem;}
+        nav a:hover {color: var(--clariem-blue);}
+        nav a.active {color: var(--navy); font-weight: 600;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--gold) 100%);}
+        
+        /* Hero */
+        .hero {background: linear-gradient(135deg, var(--clariem-blue-pale) 0%, var(--clariem-blue-light) 50%, var(--clariem-blue-pale) 100%); padding: 6rem 2.5rem 5rem;}
+        .hero-content {max-width: 1320px; margin: 0 auto; text-align: center;}
+        .hero-label {display: inline-block; padding: 0.6rem 1.2rem; background: var(--white); color: var(--navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--gold);}
+        .hero h1 {font-size: 4rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.1;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;}
+        
+        /* Container */
+        .container {max-width: 1320px; margin: 0 auto; padding: 5rem 2.5rem;}
+        .content-grid {display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem; align-items: start;}
+        
+        /* Form Section */
+        .form-section {background: var(--white); padding: 3.5rem; border-radius: 20px; border: 3px solid var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.08); position: relative;}
+        .form-section::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--gold) 100%); border-radius: 20px 20px 0 0;}
+        .form-section h2 {font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--navy-dark);}
+        .form-section p {color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.7;}
+        #hubspot-form-container {min-height: 400px;}
+        
+        /* Info Section */
+        .info-section h2 {font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--navy-dark);}
+        .info-section > p {color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.8; font-size: 1.1rem;}
+        
+        .process-steps {margin-bottom: 3rem;}
+        .process-step {display: flex; align-items: start; gap: 1.5rem; margin-bottom: 2rem; padding: 2rem; background: linear-gradient(135deg, var(--clariem-blue-pale) 0%, var(--white) 100%); border-radius: 12px; border-left: 5px solid var(--clariem-blue); transition: all 0.3s;}
+        .process-step:hover {transform: translateX(5px); box-shadow: 0 6px 20px rgba(0,0,0,0.08);}
+        .step-number {width: 50px; height: 50px; background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.3rem; flex-shrink: 0; box-shadow: 0 4px 15px rgba(60, 99, 112, 0.3);}
+        .step-content h3 {font-size: 1.3rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.5rem;}
+        .step-content p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin: 0;}
+
+        .contact-cards {display: grid; gap: 1.5rem; margin-top: 2rem;}
+        .contact-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2rem; border-radius: 12px; border: 2px solid var(--border); border-left: 4px solid var(--clariem-blue); display: flex; align-items: start; gap: 1.5rem; transition: all 0.3s;}
+        .contact-card:hover {border-left-width: 6px; border-color: var(--gold); transform: translateX(5px);}
+        .contact-icon {width: 56px; height: 56px; background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; color: var(--white); box-shadow: 0 4px 15px rgba(60, 99, 112, 0.3);}
+        .contact-card h3 {font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy-dark);}
+        .contact-card p {color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem;}
+        .contact-card a {color: var(--clariem-blue); text-decoration: none; font-weight: 700; font-size: 1rem; transition: color 0.3s;}
+        .contact-card a:hover {color: var(--gold);}
+        
+        /* Value Props Section */
+        .value-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%); padding: 5rem 2.5rem;}
+        .section-header {text-align: center; margin-bottom: 4rem;}
+        .section-label {display: inline-block; padding: 0.6rem 1.3rem; background: linear-gradient(135deg, var(--clariem-blue-pale) 0%, var(--clariem-blue-light) 100%); color: var(--navy); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; border: 1px solid var(--clariem-blue);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1rem; letter-spacing: -0.025em;}
+        h2 .gold-highlight {color: var(--gold);}
+        .value-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1320px; margin: 0 auto;}
+        .value-card {background: var(--white); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; position: relative;}
+        .value-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--gold) 100%);}
+        .value-card:hover {border-color: var(--clariem-blue); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(60, 99, 112, 0.15);}
+        .value-icon {width: 80px; height: 80px; background: linear-gradient(135deg, var(--clariem-blue) 0%, var(--navy) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(60, 99, 112, 0.3);}
+        .value-card h3 {font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--navy-dark);}
+        .value-card p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;}
+        
+        /* FAQ Section */
+        .faq-section {padding: 6rem 2.5rem; background: var(--white);}
+        .faq-container {max-width: 1100px; margin: 0 auto;}
+        .faq-item {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-radius: 16px; margin-bottom: 1.5rem; border: 2px solid var(--border); border-left: 5px solid var(--gold); transition: all 0.3s; overflow: hidden;}
+        .faq-item:hover {box-shadow: 0 8px 30px rgba(0,0,0,0.08);}
+        .faq-question {padding: 2rem 2.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;}
+        .faq-question h3 {font-size: 1.3rem; font-weight: 700; color: var(--navy-dark); margin: 0; flex: 1;}
+        .faq-toggle {width: 36px; height: 36px; background: var(--clariem-blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 800; font-size: 1.3rem; transition: all 0.3s; flex-shrink: 0;}
+        .faq-item:hover .faq-toggle {background: var(--gold); color: var(--white);}
+        .faq-item.active .faq-toggle {transform: rotate(45deg); background: var(--clariem-blue); color: var(--white);}
+        .faq-answer {max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;}
+        .faq-answer-content {padding: 0 2.5rem 2rem 2.5rem;}
+        .faq-answer p {color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;}
+        .faq-item.active .faq-answer {max-height: 500px; transition: max-height 0.5s ease-in;}
+
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255, 255, 255, 0.8); padding: 4rem 0 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 4rem; margin-bottom: 3rem;}
+        .footer-brand {max-width: 400px;}
+        .footer-logo {margin-bottom: 1rem;}
+        .footer-logo img {height: 50px; width: auto;}
+        .footer-tagline {font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); font-weight: 500; margin-top: 0.5rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;}
+        .footer-description {line-height: 1.7; font-size: 0.95rem; color: rgba(255, 255, 255, 0.7);}
+        .footer-section h4 {color: var(--white); font-weight: 700; margin-bottom: 1.5rem; font-size: 1.1rem;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 1rem;}
+        .footer-links a {color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s; font-size: 0.95rem;}
+        .footer-links a:hover {color: var(--clariem-blue-light);}
+        .footer-bottom {text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;}
+
+        @media (max-width: 1024px) {
+            .hero h1 {font-size: 3rem;}
+            .content-grid {grid-template-columns: 1fr; gap: 3rem;}
+            .value-grid {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="transform-copilot-logo-trans.png" alt="Transform Copilot">
+            </a>
+            <ul>
+                <li><a href="index.html">Why Transform Copilot</a></li>
+                <li><a href="2-how-we-help.html">How We Help Leaders</a></li>
+                <li><a href="3-work-with-us.html" class="active">Work With Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Let's Start the Conversation</span>
+            <h1>Partner With Us for <span class="highlight">AI Advantage</span></h1>
+            <p class="hero-subtitle">Schedule an exploratory conversation to discuss your AI leadership challenges and determine the right engagement approach for your organization.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-grid">
+            <div class="form-section">
+                <h2>Schedule Your Conversation</h2>
+                <p>Share your information below and we'll reach out within 24 hours to schedule a time that works for you.</p>
+                <div id="hubspot-form-container">
+                    <script charset="utf-8" type="text/javascript" src="//clariem.sharepoint.com///js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                      hbspt.forms.create({
+                        portalId: "7247302",
+                        formId: "04bd596b-b068-464c-aeb4-76a22855ef88",
+                        region: "na1"
+                      });
+                    </script>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Our Engagement Process</h2>
+                <p>We take a consultative approach to every partnership—starting with understanding your unique context before recommending any specific program.</p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Discovery Conversation</h3>
+                            <p>45-minute exploratory call to understand your organization, AI maturity, strategic priorities, and current challenges</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Tailored Recommendation</h3>
+                            <p>We propose the right engagement model—whether workshop, bootcamp, momentum program, or business process transformation—based on what matters to YOU, right now</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Scoping & Planning</h3>
+                            <p>Collaborative design of the engagement scope, objectives, timeline, and success metrics specific to your context</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Execution & Results</h3>
+                            <p>Hands-on partnership delivering practical frameworks, strategic guidance, and measurable outcomes aligned to your business goals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email Us Directly</h3>
+                            <p>Prefer email? Reach out directly</p>
+                            <a href="mailto:hello@clariem.com">hello@clariem.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">🚀</div>
+                        <div>
+                            <h3>Explore Launch Copilot</h3>
+                            <p>Interested in our pharma launch platform?</p>
+                            <a href="http://www.launchcopilot.ai">Visit LaunchCopilot.ai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="value-section">
+        <div class="section-header">
+            <span class="section-label">Why Partner With Us</span>
+            <h2>What Sets Us <span class="gold-highlight">Apart</span></h2>
+        </div>
+        <div class="value-grid">
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>What Matters to YOU</h3>
+                <p>AI-Accelerated Outcome-Based Consulting aligned to your specific use cases and context—not generic frameworks</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Buy Back Your Time</h3>
+                <p>Build your second brain and clone yourself—practical tools that deliver immediate time savings and sanity</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🧭</div>
+                <h3>AI-LOS™ Framework</h3>
+                <p>Proprietary AI Leadership Operating System gives you repeatable decision-making tools for navigating tensions</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">👥</div>
+                <h3>White-Glove Treatment</h3>
+                <p>Executive-level support with curated asset library, LMS-backed learning, and "My Questions, My Answers" methodology</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">📊</div>
+                <h3>Measurable Outcomes</h3>
+                <p>Every engagement has clear success metrics tied to business results—we charge for deliverables, not hours</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🏢</div>
+                <h3>Enterprise-Grade</h3>
+                <p>Built specifically for Directors, Sr. Directors, Executive Directors, and VPs leading teams in large enterprises</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="faq" class="faq-section">
+        <div class="faq-container">
+            <div class="section-header">
+                <span class="section-label">Frequently Asked Questions</span>
+                <h2>Common Questions <span class="gold-highlight">Answered</span></h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What industries and company sizes do you work with?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We specialize in life sciences (biopharma, medtech, diagnostics) and consumer packaged goods organizations. Our sweet spot is large enterprises ($1B+ revenue) with complex commercial operations. We work with Directors, Senior Directors, Executive Directors, and VPs leading teams or functions—not individual contributors or small startups.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How is Transform Copilot different from traditional management consulting?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We practice AI-Accelerated Outcome-Based Consulting—not time-based billing. We blend consultant expertise, proprietary IP (the AI-LOS™ framework), and AI acceleration to deliver outcomes faster. Unlike traditional consultants who deliver slide decks, we build working solutions, train your teams, and charge for deliverables. We also specialize exclusively in AI leadership, giving you deep expertise rather than generalist consulting.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What level of AI maturity do we need to work with you?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We work with organizations across the full AI maturity spectrum—from "just getting started" to "have pilots but struggling to scale." Our 2-day workshop is perfect for leaders building foundational understanding. The 30-day bootcamp suits organizations ready for hands-on implementation. The 90-day momentum program serves those scaling from pilots to institutional capabilities. We'll recommend the right starting point based on what matters to YOU, right now.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What does "build your second brain" actually mean?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We help you create AI agents and workflows that act as your digital clone—handling routine tasks, providing analysis, and freeing up your time for high-value leadership work. Think of it as having a highly capable assistant who knows your thinking, your priorities, and your context. The goal: buy back 5-10 hours per week so you can focus on what only you can do, sleep better at night, and feel in control rather than overwhelmed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Can you help with both leadership development AND business process transformation?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes—that's our unique value. Category 1 programs (2-day workshop, 30-day bootcamp, 90-day momentum) accelerate leaders and teams through the three value channels: building second brains, understanding automation, and addressing psychological undercurrents. Category 2 programs transform your core business processes: annual planning & execution, AI operating models, and AI Centers of Excellence. Most clients combine both for comprehensive transformation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What's the typical investment and timeline for engagements?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Our engagements range from the 2-day workshop ($25-40K) to comprehensive annual partnerships ($150K+). Most organizations start with either the 2-day workshop or a combined workshop + 30-day bootcamp package. Timelines run from 2 days (workshop) to 12 months (annual planning partnership). We charge for deliverables and outcomes, not consultant hours. We'll provide detailed scoping and investment estimates after our initial discovery conversation based on what matters to YOU, right now.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do the "My Questions, My Answers" methodology and LMS support work?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>"My Questions, My Answers" is our leadership dialog format—we start with your specific challenges and context, not generic frameworks. Our LMS provides curated assets, recorded sessions, frameworks, and tools you can reference anytime. You also get white-glove executive support: direct access to our team, personalized guidance, and a curated library tailored to your industry and role. Think of it as having an AI leadership expert on call, plus a comprehensive knowledge base at your fingertips.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="transform-copilot-logo.jpeg" alt="Transform Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—AI-Accelerated Outcome-Based Consulting that blends consultant expertise, proprietary IP, and AI acceleration.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Transform Copilot</a></li>
+                    <li><a href="2-how-we-help.html">How We Help Leaders</a></li>
+                    <li><a href="3-work-with-us.html">Work With Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Clariem Suite</h4>
+                <ul class="footer-links">
+                    <li><a href="http://www.launchcopilot.ai">Launch Copilot</a></li>
+                    <li><a href="http://www.clariem.com">About Clariem</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Clariem Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
