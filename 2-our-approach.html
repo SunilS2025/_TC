@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Approach | Transform Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --clariem-navy: #014184;
+            --clariem-blue: #5CBAE5;
+            --clariem-grey-blue: #3C6370;
+            --clariem-gold: #F59E0B;
+            --navy-dark: #012859;
+            --white: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --background: #F8FAFC;
+            --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%) 1;}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {display: flex; align-items: center; text-decoration: none;}
+        .logo img {height: 55px; width: auto;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem; align-items: center;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; position: relative;}
+        nav a:hover {color: var(--clariem-navy);}
+        nav a.active {color: var(--clariem-navy); font-weight: 700;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%);}
+        .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--clariem-navy);}
+        
+        /* Hero - Single smooth gradient */
+        .hero {background: linear-gradient(135deg, #E8F4FB 0%, #C5E4F3 50%, #A8DBF0 100%); padding: 6rem 2.5rem 5rem;}
+        .hero-content {max-width: 1320px; margin: 0 auto;}
+        .hero-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--white); color: var(--clariem-navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--clariem-gold); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.15;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-primary); max-width: 900px; line-height: 1.6;}
+        
+        /* Container */
+        .container {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem;}
+        section {padding: 6rem 0;}
+        .section-header {text-align: center; margin-bottom: 4.5rem;}
+        .section-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--clariem-gold); color: var(--navy-dark); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
+        h2 .gold-highlight {color: var(--clariem-gold);}
+        .section-description {font-size: 1.3rem; color: var(--text-secondary); max-width: 950px; margin: 0 auto; line-height: 1.7;}
+        
+        /* Two Pillars Section */
+        .pillars-section {background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);}
+        .pillars-intro {max-width: 1000px; margin: 0 auto 4rem; font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); text-align: center; padding: 3rem; background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.15) 100%); border-radius: 20px; border: 3px solid var(--clariem-gold); box-shadow: 0 8px 30px rgba(0,0,0,0.08);}
+        .pillars-intro strong {color: var(--navy-dark); font-size: 1.4rem; display: block; margin-bottom: 1rem;}
+        .pillars-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem;}
+        .pillar-card {background: var(--white); padding: 3rem; border-radius: 20px; border: 3px solid var(--border); transition: all 0.3s; position: relative;}
+        .pillar-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 20px 20px 0 0;}
+        .pillar-card:hover {border-color: var(--clariem-navy); box-shadow: 0 15px 50px rgba(1, 65, 132, 0.15);}
+        .pillar-icon {width: 80px; height: 80px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        .pillar-card h3 {font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .pillar-card p {color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;}
+        .pillar-list {list-style: none; padding: 0;}
+        .pillar-list li {padding: 0.8rem 0; border-bottom: 1px solid var(--border); color: var(--text-primary); font-size: 1rem; display: flex; align-items: start; gap: 0.8rem;}
+        .pillar-list li:last-child {border-bottom: none;}
+        .pillar-list li span {color: var(--clariem-gold); font-weight: 700; font-size: 1.2rem;}
+        
+        /* Journey Section */
+        .journey-section {background: var(--white);}
+        .journey-path {max-width: 1100px; margin: 0 auto 4rem; padding: 3rem; background: linear-gradient(135deg, #E8F4FB 0%, var(--white) 100%); border-radius: 20px; border: 3px solid var(--clariem-navy); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; box-shadow: 0 6px 25px rgba(1, 65, 132, 0.1);}
+        .journey-step {text-align: center; flex: 1;}
+        .journey-step-number {width: 70px; height: 70px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.5rem; margin: 0 auto 1rem; box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        .journey-step h4 {font-size: 1.2rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.5rem;}
+        .journey-step p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5;}
+        .journey-arrow {font-size: 2.5rem; color: var(--clariem-gold); font-weight: 800;}
+        .journey-support {text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(245, 158, 11, 0.1); border-radius: 12px; border: 2px solid var(--clariem-gold);}
+        .journey-support p {font-size: 1.1rem; color: var(--navy-dark); font-weight: 600;}
+        
+        /* Assessment Section */
+        .assessment-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);}
+        .assessment-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;}
+        .assessment-card {background: var(--white); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); border-left: 5px solid var(--clariem-navy); transition: all 0.3s; text-align: center;}
+        .assessment-card:hover {border-left-color: var(--clariem-gold); transform: translateY(-5px); box-shadow: 0 10px 35px rgba(1, 65, 132, 0.12);}
+        .assessment-icon {font-size: 2.5rem; margin-bottom: 1rem;}
+        .assessment-card h3 {font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--navy-dark);}
+        .assessment-card p {color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;}
+        
+        /* Methodology Section */
+        .methodology-section {background: var(--white);}
+        .methodology-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem;}
+        .methodology-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); transition: all 0.3s; position: relative;}
+        .methodology-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%); border-radius: 16px 16px 0 0;}
+        .methodology-card:hover {border-color: var(--clariem-navy); box-shadow: 0 12px 40px rgba(1, 65, 132, 0.15);}
+        .methodology-icon {width: 60px; height: 60px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--white); box-shadow: 0 4px 15px rgba(1, 65, 132, 0.3);}
+        .methodology-card h3 {font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .methodology-card p {color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;}
+        
+        /* Support Section */
+        .support-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);}
+        .support-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;}
+        .support-card {background: var(--white); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); text-align: center; transition: all 0.3s;}
+        .support-card:hover {border-color: var(--clariem-gold); transform: translateY(-5px); box-shadow: 0 10px 35px rgba(1, 65, 132, 0.12);}
+        .support-icon {font-size: 2.5rem; margin-bottom: 1rem;}
+        .support-card h3 {font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy-dark);}
+        .support-card p {color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;}
+        
+        /* CTA Section */
+        .cta-section {background: linear-gradient(135deg, var(--navy-dark) 0%, var(--clariem-navy) 100%); padding: 5rem 2.5rem; position: relative; overflow: hidden;}
+        .cta-section::before {content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(92, 186, 229, 0.2) 0%, transparent 70%); animation: pulse 6s ease-in-out infinite;}
+        @keyframes pulse {0%, 100% {transform: scale(1); opacity: 1;} 50% {transform: scale(1.1); opacity: 0.8;}}
+        .cta-content {max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1;}
+        .cta-content h2 {color: var(--white); margin-bottom: 1.5rem;}
+        .cta-content p {color: rgba(255,255,255,0.9); font-size: 1.3rem; margin-bottom: 2.5rem; line-height: 1.7;}
+        .cta-buttons {display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;}
+        .btn {padding: 1rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 10px; border: none; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;}
+        .btn-primary {background: var(--clariem-gold); color: var(--navy-dark); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);}
+        .btn-primary:hover {box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4); transform: translateY(-2px);}
+        .btn-secondary {background: transparent; color: var(--white); border: 2px solid var(--white);}
+        .btn-secondary:hover {background: var(--white); color: var(--navy-dark); transform: translateY(-2px);}
+        
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255,255,255,0.8); padding: 4rem 2.5rem 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;}
+        .footer-logo img {height: 50px; margin-bottom: 1rem;}
+        .footer-tagline {font-size: 1rem; font-weight: 600; color: var(--clariem-gold); margin-bottom: 1rem;}
+        .footer-description {font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);}
+        .footer-section h4 {color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; transition: color 0.3s;}
+        .footer-links a:hover {color: var(--clariem-gold);}
+        .footer-bottom {text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.6);}
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .pillars-grid, .methodology-grid {grid-template-columns: 1fr;}
+            .assessment-grid, .support-grid {grid-template-columns: repeat(2, 1fr);}
+            .footer-content {grid-template-columns: 1fr 1fr;}
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn {display: block;}
+            nav ul {display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 2rem; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
+            nav ul.mobile-menu-open {display: flex;}
+            nav a.active::after {display: none;}
+            .hero h1 {font-size: 2.5rem;}
+            .hero-subtitle {font-size: 1.2rem;}
+            h2 {font-size: 2.2rem;}
+            .journey-path {flex-direction: column;}
+            .journey-arrow {transform: rotate(90deg);}
+            .assessment-grid, .support-grid {grid-template-columns: 1fr;}
+            .footer-content {grid-template-columns: 1fr;}
+            .cta-buttons {flex-direction: column; align-items: center;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="20251121_TClogo_trans.png" alt="Transform Copilot">
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul>
+                <li><a href="index.html">Why Transform Copilot</a></li>
+                <li><a href="2-our-approach.html" class="active">Our Approach</a></li>
+                <li><a href="3-offerings.html">Offerings</a></li>
+                <li><a href="4-work-with-us.html">Work With Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Our Approach</span>
+            <h1>People & Performance: <span class="highlight">It Starts with Leaders</span></h1>
+            <p class="hero-subtitle">We help leaders transform themselves first, then extend that capability to drive measurable business results. Our approach combines DNA-driven personalization with systematic installation—not just training, but working systems that persist.</p>
+        </div>
+    </section>
+
+    <!-- Two Pillars Section -->
+    <section class="pillars-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Dual Focus</span>
+                <h2>Transform Your People <span class="gold-highlight">& Performance</span></h2>
+            </div>
+            <div class="pillars-intro">
+                <strong>AI transformation succeeds when it starts with leaders.</strong>
+                Leaders who master AI personally become credible champions for organizational change. We help you build your own AI capability first, then leverage that expertise to transform how your teams and organization deliver value.
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">👥</div>
+                    <h3>Transform Your People</h3>
+                    <p>Build AI-capable leaders who can model effective AI use and guide their teams through transformation with confidence and credibility.</p>
+                    <ul class="pillar-list">
+                        <li><span>✓</span> Personal AI mastery and "second brain" development</li>
+                        <li><span>✓</span> Team effectiveness through shared AI workflows</li>
+                        <li><span>✓</span> Leadership credibility through demonstrated competence</li>
+                        <li><span>✓</span> Change readiness and psychological safety</li>
+                        <li><span>✓</span> Community and peer learning networks</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">📈</div>
+                    <h3>Transform Your Performance</h3>
+                    <p>Drive measurable business outcomes through AI-augmented processes, systems that deliver enterprise value, and sustained momentum.</p>
+                    <ul class="pillar-list">
+                        <li><span>✓</span> Verified time savings (10+ hours/week)</li>
+                        <li><span>✓</span> Process optimization and efficiency gains</li>
+                        <li><span>✓</span> Decision quality improvement through AI augmentation</li>
+                        <li><span>✓</span> Institutional AI capability building</li>
+                        <li><span>✓</span> Value capture and ROI documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="journey-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Your Journey</span>
+                <h2>Building <span class="gold-highlight">Momentum</span></h2>
+                <p class="section-description">Our standard engagement model builds capability through three phases—jumpstart, bootcamp, and momentum—plus ongoing support and enablement.</p>
+            </div>
+            <div class="journey-path">
+                <div class="journey-step">
+                    <div class="journey-step-number">2</div>
+                    <h4>Day Jumpstart</h4>
+                    <p>Intensive workshop to establish foundation, diagnose DNA, and build first working systems</p>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">
+                    <div class="journey-step-number">30</div>
+                    <h4>Day Bootcamp</h4>
+                    <p>Guided installation of complete operating system with weekly calibration and refinement</p>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">
+                    <div class="journey-step-number">90</div>
+                    <h4>Day Momentum</h4>
+                    <p>Institutionalize gains, extend to team, and document verified outcomes for sustained impact</p>
+                </div>
+            </div>
+            <div class="journey-support">
+                <p>+ Ongoing Support: LMS content library, leader community, office hours, and context refresh</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Section -->
+    <section class="assessment-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Diagnostic Foundation</span>
+                <h2>Assessment <span class="gold-highlight">Approach</span></h2>
+                <p class="section-description">Every engagement begins with comprehensive assessment to ensure we configure systems for your specific context, not generic templates.</p>
+            </div>
+            <div class="assessment-grid">
+                <div class="assessment-card">
+                    <span class="assessment-icon">⏱️</span>
+                    <h3>Time Audit</h3>
+                    <p>Baseline measurement of how you spend time now, identifying high-value automation opportunities</p>
+                </div>
+                <div class="assessment-card">
+                    <span class="assessment-icon">🧬</span>
+                    <h3>Personal DNA</h3>
+                    <p>Communication style, cognitive preferences, and decision-making patterns that shape AI configuration</p>
+                </div>
+                <div class="assessment-card">
+                    <span class="assessment-icon">🏢</span>
+                    <h3>Business DNA</h3>
+                    <p>Strategic priorities, stakeholder map, and operating rhythms that define your business context</p>
+                </div>
+                <div class="assessment-card">
+                    <span class="assessment-icon">💻</span>
+                    <h3>Technology Readiness</h3>
+                    <p>Current AI access, platform environment, and technical constraints that shape implementation</p>
+                </div>
+                <div class="assessment-card">
+                    <span class="assessment-icon">🎯</span>
+                    <h3>Leader Readiness</h3>
+                    <p>Motivation level, time commitment capacity, and psychological readiness for AI adoption</p>
+                </div>
+                <div class="assessment-card">
+                    <span class="assessment-icon">🔄</span>
+                    <h3>Organizational Fit</h3>
+                    <p>Company culture, security requirements, and compliance considerations for sustainable adoption</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How We Deliver</span>
+                <h2>Our <span class="gold-highlight">Methodology</span></h2>
+            </div>
+            <div class="methodology-grid">
+                <div class="methodology-card">
+                    <div class="methodology-icon">🔧</div>
+                    <h3>Installation, Not Training</h3>
+                    <p>We don't teach you how to use AI—we configure working systems for your specific context. Like getting a personal assistant who already knows your preferences, not attending a workshop and hoping to apply what you learned.</p>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-icon">📊</div>
+                    <h3>Guaranteed Outcomes</h3>
+                    <p>Every engagement has measurable success criteria. We guarantee 5+ hours/week of verified time savings, or we continue calibration at no additional cost until we get there. Results, not promises.</p>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-icon">🧬</div>
+                    <h3>DNA-Driven Personalization</h3>
+                    <p>Your Personal DNA (how you think and communicate) combined with Business DNA (your strategic context) creates systems calibrated specifically for you—not generic prompts that work for everyone.</p>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-icon">🏛️</div>
+                    <h3>Systems That Persist</h3>
+                    <p>We build seven operational systems (Communication, Meetings, Documents, Decisions, People, Strategy, Learning) that continue working long after engagement ends. Institutional capability, not one-time help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Beyond the Engagement</span>
+                <h2>Ongoing <span class="gold-highlight">Support</span></h2>
+                <p class="section-description">Your relationship with Transform Copilot extends beyond the formal engagement through multiple support channels.</p>
+            </div>
+            <div class="support-grid">
+                <div class="support-card">
+                    <span class="support-icon">📚</span>
+                    <h3>LMS Content Library</h3>
+                    <p>Curated assets, frameworks, and recorded sessions available anytime</p>
+                </div>
+                <div class="support-card">
+                    <span class="support-icon">👥</span>
+                    <h3>Leader Community</h3>
+                    <p>Peer network of AI leaders sharing insights and best practices</p>
+                </div>
+                <div class="support-card">
+                    <span class="support-icon">🎯</span>
+                    <h3>Office Hours</h3>
+                    <p>Regular access for questions, troubleshooting, and guidance</p>
+                </div>
+                <div class="support-card">
+                    <span class="support-icon">🔄</span>
+                    <h3>Context Refresh</h3>
+                    <p>Periodic updates as your role, priorities, or context evolves</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your AI Leadership?</h2>
+            <p>Explore our offerings structured around the AI Leadership Operating System—from foundational personal effectiveness to enterprise-wide transformation.</p>
+            <div class="cta-buttons">
+                <a href="3-offerings.html" class="btn btn-primary">
+                    View Our Offerings
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="4-work-with-us.html" class="btn btn-secondary">Start a Conversation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="20251121_TClogo.jpg" alt="Transform Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—your value delivery partner for AI transformation, making your job easier and saving you time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Transform Copilot</a></li>
+                    <li><a href="2-our-approach.html">Our Approach</a></li>
+                    <li><a href="3-offerings.html">Offerings</a></li>
+                    <li><a href="4-work-with-us.html">Work With Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Clariem Suite</h4>
+                <ul class="footer-links">
+                    <li><a href="http://www.launchcopilot.ai">Launch Copilot</a></li>
+                    <li><a href="http://www.clariem.com">About Clariem</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Clariem Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

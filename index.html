@@ -6,12 +6,7 @@
     <title>Transform Copilot | AI Leadership Operating System™</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * {margin: 0; padding: 0; box-sizing: border-box;}
         :root {
             --clariem-navy: #014184;
             --clariem-blue: #5CBAE5;
@@ -24,969 +19,241 @@
             --background: #F8FAFC;
             --border: #E2E8F0;
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background-color: var(--white);
-            scroll-behavior: smooth;
-        }
-
+        body {font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
         /* Header */
-        header {
-            background: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%) 1;
-        }
-
-        nav {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 0 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 55px;
-            width: auto;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--clariem-navy);
-        }
-
-        nav a.active {
-            color: var(--clariem-navy);
-            font-weight: 700;
-        }
-
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1.5rem;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%);
-        }
-
-        /* Mobile menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--clariem-navy);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #E8F4FB 0%, #A8DBF0 100%);
-            padding: 6rem 2.5rem 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(1, 65, 132, 0.1) 100%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 1320px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-label {
-            display: inline-block;
-            padding: 0.7rem 1.4rem;
-            background: var(--white);
-            color: var(--clariem-navy);
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1.5rem;
-            border: 2px solid var(--clariem-gold);
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            color: var(--navy-dark);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.6rem;
-            color: var(--text-primary);
-            max-width: 950px;
-            font-weight: 400;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%);
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 8px 30px rgba(1, 65, 132, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--clariem-navy);
-            border: 2px solid var(--clariem-navy);
-        }
-
-        .btn-secondary:hover {
-            background: var(--clariem-navy);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%) 1;}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {display: flex; align-items: center; text-decoration: none;}
+        .logo img {height: 55px; width: auto;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem; align-items: center;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; position: relative;}
+        nav a:hover {color: var(--clariem-navy);}
+        nav a.active {color: var(--clariem-navy); font-weight: 700;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%);}
+        .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--clariem-navy);}
+        
+        /* Hero - Single smooth gradient */
+        .hero {background: linear-gradient(135deg, #E8F4FB 0%, #C5E4F3 50%, #A8DBF0 100%); padding: 6rem 2.5rem 5rem;}
+        .hero-content {max-width: 1320px; margin: 0 auto;}
+        .hero-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--white); color: var(--clariem-navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--clariem-gold); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.15;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-primary); max-width: 900px; line-height: 1.6; margin-bottom: 2.5rem;}
+        .hero-cta {display: flex; gap: 1rem; flex-wrap: wrap;}
+        .btn {padding: 1rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 10px; border: none; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;}
+        .btn-primary {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); color: var(--white); box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        .btn-primary:hover {box-shadow: 0 8px 30px rgba(1, 65, 132, 0.4); transform: translateY(-2px);}
+        .btn-secondary {background: var(--white); color: var(--clariem-navy); border: 2px solid var(--clariem-navy);}
+        .btn-secondary:hover {background: var(--clariem-navy); color: var(--white); transform: translateY(-2px);}
+        
         /* Container */
-        .container {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 0 2.5rem;
-        }
-
-        section {
-            padding: 6rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4.5rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            padding: 0.7rem 1.4rem;
-            background: var(--clariem-gold);
-            color: var(--navy-dark);
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-        }
-
-        h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--navy-dark);
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
-        }
-
-        h2 .gold-highlight {
-            color: var(--clariem-gold);
-        }
-
-        .section-description {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            max-width: 950px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Challenge Section */
-        .challenge-section {
-            background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);
-        }
-
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .challenge-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .challenge-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%);
-            border-radius: 16px 16px 0 0;
-        }
-
-        .challenge-card:hover {
-            border-color: var(--clariem-navy);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(1, 65, 132, 0.15);
-        }
-
-        .challenge-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .challenge-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--navy-dark);
-        }
-
-        .challenge-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
+        .container {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem;}
+        section {padding: 6rem 0;}
+        .section-header {text-align: center; margin-bottom: 4.5rem;}
+        .section-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--clariem-gold); color: var(--navy-dark); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
+        h2 .gold-highlight {color: var(--clariem-gold);}
+        .section-description {font-size: 1.3rem; color: var(--text-secondary); max-width: 950px; margin: 0 auto; line-height: 1.7;}
+        
+        /* Challenge Section - Three Imperatives */
+        .challenge-section {background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%);}
+        .challenge-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem;}
+        .challenge-card {background: var(--white); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); transition: all 0.3s; position: relative;}
+        .challenge-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%); border-radius: 16px 16px 0 0;}
+        .challenge-card:hover {border-color: var(--clariem-navy); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(1, 65, 132, 0.15);}
+        .challenge-icon {font-size: 3rem; margin-bottom: 1.5rem; display: block;}
+        .challenge-card h3 {font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .challenge-card p {color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;}
+        
         /* Framework Section */
-        .framework-section {
-            background: var(--white);
-        }
-
-        .pyramid-container {
-            max-width: 900px;
-            margin: 0 auto 4rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
-            border-radius: 20px;
-            border: 3px solid var(--clariem-blue);
-        }
-
-        .pyramid-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .framework-layers {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .layer-card {
-            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            border-left: 5px solid var(--clariem-navy);
-            transition: all 0.3s;
-        }
-
-        .layer-card:hover {
-            border-left-color: var(--clariem-gold);
-            transform: translateX(5px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        }
-
-        .layer-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(1, 65, 132, 0.3);
-        }
-
-        .layer-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--navy-dark);
-        }
-
-        .layer-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
+        .framework-section {background: var(--white);}
+        .pyramid-container {max-width: 900px; margin: 0 auto 4rem; padding: 2rem; background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-radius: 20px; border: 3px solid var(--clariem-blue);}
+        .pyramid-image {width: 100%; height: auto; display: block;}
+        .framework-layers {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem;}
+        .layer-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); border-left: 5px solid var(--clariem-navy); transition: all 0.3s;}
+        .layer-card:hover {border-left-color: var(--clariem-gold); transform: translateX(5px); box-shadow: 0 8px 30px rgba(0,0,0,0.08);}
+        .layer-number {width: 50px; height: 50px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(1, 65, 132, 0.3);}
+        .layer-card h3 {font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .layer-card p {color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem;}
+        
         /* Tensions Section */
-        .tensions-section {
-            background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);
-        }
-
-        .tensions-intro {
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-primary);
-            text-align: center;
-            padding: 2.5rem;
-            background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.1) 100%);
-            border-radius: 16px;
-            border: 2px solid var(--clariem-gold);
-        }
-
-        .tensions-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-        }
-
-        .tension-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .tension-card.full-width {
-            grid-column: 1 / -1;
-        }
-
-        .tension-card:hover {
-            border-color: var(--clariem-navy);
-            box-shadow: 0 10px 35px rgba(1, 65, 132, 0.12);
-        }
-
-        .tension-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .tension-badge {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 800;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(1, 65, 132, 0.3);
-        }
-
-        .tension-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--navy-dark);
-        }
-
-        .tension-sides {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .tension-side {
-            flex: 1;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
-            border-radius: 12px;
-            border: 2px solid var(--border);
-        }
-
-        .tension-side h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--clariem-navy);
-        }
-
-        .tension-side p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .vs-symbol {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--clariem-gold);
-            flex-shrink: 0;
-        }
-
-        /* Value Props Section */
-        .value-section {
-            background: var(--white);
-        }
-
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-
-        .value-card {
-            background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%);
-            border-radius: 16px 16px 0 0;
-        }
-
-        .value-card:hover {
-            border-color: var(--clariem-navy);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(1, 65, 132, 0.15);
-        }
-
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin: 0 auto 1.5rem;
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);
-        }
-
-        .value-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--navy-dark);
-        }
-
-        .value-card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
+        .tensions-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);}
+        .tensions-intro {max-width: 1000px; margin: 0 auto 3rem; font-size: 1.2rem; line-height: 1.8; color: var(--text-primary); text-align: center; padding: 2.5rem; background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 16px; border: 2px solid var(--clariem-gold);}
+        .tensions-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem;}
+        .tension-card {background: var(--white); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); transition: all 0.3s;}
+        .tension-card.full-width {grid-column: 1 / -1;}
+        .tension-card:hover {border-color: var(--clariem-navy); box-shadow: 0 10px 35px rgba(1, 65, 132, 0.12);}
+        .tension-header {display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;}
+        .tension-badge {width: 60px; height: 60px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 800; font-size: 1.5rem; flex-shrink: 0; box-shadow: 0 4px 15px rgba(1, 65, 132, 0.3);}
+        .tension-header h3 {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark);}
+        .tension-sides {display: flex; align-items: center; gap: 2rem;}
+        .tension-side {flex: 1; padding: 1.5rem; background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-radius: 12px; border: 2px solid var(--border);}
+        .tension-side h4 {font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--clariem-navy);}
+        .tension-side p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;}
+        .vs-symbol {font-size: 2rem; font-weight: 800; color: var(--clariem-gold); flex-shrink: 0;}
+        
+        /* Value Section */
+        .value-section {background: var(--white);}
+        .value-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;}
+        .value-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2.5rem; border-radius: 16px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; position: relative;}
+        .value-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%); border-radius: 16px 16px 0 0;}
+        .value-card:hover {border-color: var(--clariem-navy); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(1, 65, 132, 0.15);}
+        .value-icon {width: 80px; height: 80px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        .value-card h3 {font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--navy-dark);}
+        .value-card p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;}
+        
         /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--clariem-navy) 100%);
-            padding: 5rem 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(92, 186, 229, 0.2) 0%, transparent 70%);
-            animation: pulse 6s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
-        .cta-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-content h2 {
-            color: var(--white);
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-content p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.3rem;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-buttons .btn-primary {
-            background: var(--clariem-gold);
-            color: var(--navy-dark);
-        }
-
-        .cta-buttons .btn-primary:hover {
-            background: var(--white);
-            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
-        }
-
-        .cta-buttons .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        .cta-buttons .btn-secondary:hover {
-            background: var(--white);
-            color: var(--clariem-navy);
-        }
-
+        .cta-section {background: linear-gradient(135deg, var(--navy-dark) 0%, var(--clariem-navy) 100%); padding: 5rem 2.5rem; position: relative; overflow: hidden;}
+        .cta-section::before {content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(92, 186, 229, 0.2) 0%, transparent 70%); animation: pulse 6s ease-in-out infinite;}
+        @keyframes pulse {0%, 100% {transform: scale(1); opacity: 1;} 50% {transform: scale(1.1); opacity: 0.8;}}
+        .cta-content {max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1;}
+        .cta-content h2 {color: var(--white); margin-bottom: 1.5rem;}
+        .cta-content p {color: rgba(255,255,255,0.9); font-size: 1.3rem; margin-bottom: 2.5rem; line-height: 1.7;}
+        .cta-buttons {display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;}
+        .cta-buttons .btn-primary {background: var(--clariem-gold); color: var(--navy-dark);}
+        .cta-buttons .btn-secondary {background: transparent; color: var(--white); border-color: var(--white);}
+        .cta-buttons .btn-secondary:hover {background: var(--white); color: var(--navy-dark);}
+        
         /* Footer */
-        footer {
-            background: var(--navy-dark);
-            color: var(--white);
-            padding: 4rem 2.5rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1320px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand {
-            max-width: 350px;
-        }
-
-        .footer-logo img {
-            height: 50px;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-
-        .footer-tagline {
-            font-size: 0.9rem;
-            color: var(--clariem-gold);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .footer-description {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .footer-section h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            color: var(--white);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--clariem-gold);
-        }
-
-        .footer-bottom {
-            max-width: 1320px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
+        footer {background: var(--navy-dark); color: rgba(255,255,255,0.8); padding: 4rem 2.5rem 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;}
+        .footer-brand {}
+        .footer-logo img {height: 50px; margin-bottom: 1rem;}
+        .footer-tagline {font-size: 1rem; font-weight: 600; color: var(--clariem-gold); margin-bottom: 1rem;}
+        .footer-description {font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);}
+        .footer-section h4 {color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; transition: color 0.3s;}
+        .footer-links a:hover {color: var(--clariem-gold);}
+        .footer-bottom {text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.6);}
+        
+        /* Mobile Responsive */
         @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-
-            h2 {
-                font-size: 2.5rem;
-            }
-
-            .challenge-grid,
-            .framework-layers,
-            .value-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .challenge-grid, .framework-layers, .value-grid {grid-template-columns: repeat(2, 1fr);}
+            .footer-content {grid-template-columns: 1fr 1fr;}
         }
-
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                gap: 0;
-                padding: 1rem 0;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            }
-
-            nav ul.mobile-menu-open {
-                display: flex;
-            }
-
-            nav ul li {
-                width: 100%;
-            }
-
-            nav ul a {
-                display: block;
-                padding: 1rem 2.5rem;
-                border-bottom: 1px solid var(--border);
-            }
-
-            nav ul a:hover {
-                background: var(--background);
-            }
-
-            nav a.active::after {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                justify-content: center;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .section-description {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .challenge-grid,
-            .framework-layers,
-            .tensions-grid,
-            .value-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tension-card.full-width {
-                grid-column: 1;
-            }
-
-            .tension-sides {
-                flex-direction: column;
-            }
-
-            .vs-symbol {
-                transform: rotate(90deg);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-content h2 {
-                font-size: 2rem;
-            }
-
-            .cta-content p {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-
-            .logo img {
-                height: 45px;
-            }
+            .mobile-menu-btn {display: block;}
+            nav ul {display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 2rem; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
+            nav ul.mobile-menu-open {display: flex;}
+            nav a.active::after {display: none;}
+            .hero h1 {font-size: 2.5rem;}
+            .hero-subtitle {font-size: 1.2rem;}
+            h2 {font-size: 2.2rem;}
+            .challenge-grid, .framework-layers, .tensions-grid, .value-grid {grid-template-columns: 1fr;}
+            .tension-sides {flex-direction: column;}
+            .vs-symbol {transform: rotate(90deg);}
+            .footer-content {grid-template-columns: 1fr;}
+            .cta-buttons {flex-direction: column; align-items: center;}
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav>
             <a href="index.html" class="logo">
                 <img src="20251121_TClogo_trans.png" alt="Transform Copilot">
             </a>
-            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+            <button class="mobile-menu-btn">☰</button>
             <ul>
                 <li><a href="index.html" class="active">Why Transform Copilot</a></li>
-                <li><a href="2-how-we-help.html">How We Help Leaders</a></li>
-                <li><a href="3-work-with-us.html">Work With Us</a></li>
+                <li><a href="2-our-approach.html">Our Approach</a></li>
+                <li><a href="3-offerings.html">Offerings</a></li>
+                <li><a href="4-work-with-us.html">Work With Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Section 1: Hero -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-label">AI Leadership Operating System™</span>
-            <h1>Lead with Clarity. <span class="highlight">Transform with AI.</span></h1>
-            <p class="hero-subtitle">TransformCopilot is the AI-powered leadership platform that provides the tools, frameworks, and structured pathways high-impact leaders need to confidently adopt AI, navigate organizational complexity, and drive real transformation.</p>
+            <h1>Lead the AI Era with <span class="highlight">Courage, Clarity & Competence</span></h1>
+            <p class="hero-subtitle">AI democratizes the ability to build solutions—your imagination is the only constraint. Transform Copilot helps leaders identify where to go, figure out the path, and take their teams there. We're your value delivery partners, making your job easier and saving you time.</p>
             <div class="hero-cta">
-                <a href="2-how-we-help.html" class="btn btn-primary">
-                    Explore Our Approach
+                <a href="3-offerings.html" class="btn btn-primary">
+                    Explore Our Offerings
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                 </a>
-                <a href="3-work-with-us.html" class="btn btn-secondary">Schedule a Conversation</a>
+                <a href="4-work-with-us.html" class="btn btn-secondary">Start a Conversation</a>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: The AI Leadership Challenge -->
-    <section id="challenge" class="challenge-section">
+    <!-- Section 1: The AI Leadership Imperative -->
+    <section class="challenge-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">The Challenge</span>
-                <h2>The AI Leadership <span class="gold-highlight">Imperative</span></h2>
-                <p class="section-description">AI is transforming the enterprise — but most leaders aren’t equipped for the pressures it creates. The real challenge isn’t the tech; it’s the human and strategic tensions that come with it. These tensions form three leadership imperatives.</p>
+                <span class="section-label">The AI Leadership Imperative</span>
+                <h2>Three Pillars of <span class="gold-highlight">AI Leadership</span></h2>
+                <p class="section-description">In the AI era, leaders must embody courage to embrace change, clarity to navigate complexity, and competence to deliver results. These aren't just nice-to-haves—they're essential for survival.</p>
             </div>
-
             <div class="challenge-grid">
                 <div class="challenge-card">
-                    <span class="challenge-icon">🎯</span>
-                    <h3>COURAGE: Take Charge</h3>
-                    <p>AI brings speed and ambiguity that make waiting for perfect clarity impossible. This imperative helps you step up, set the tone, and confidently own your organization’s AI agenda.</p>
+                    <span class="challenge-icon">🦁</span>
+                    <h3>Courage</h3>
+                    <p>The willingness to embrace AI transformation, challenge the status quo, and make bold decisions in uncertainty. Leaders must overcome fear of the unknown and model adaptability for their teams.</p>
                 </div>
-
+                <div class="challenge-card">
+                    <span class="challenge-icon">🧭</span>
+                    <h3>Clarity</h3>
+                    <p>The ability to cut through AI hype and confusion, articulate a compelling vision, and provide direction when others are overwhelmed. Clarity enables focused action and aligned teams.</p>
+                </div>
                 <div class="challenge-card">
                     <span class="challenge-icon">⚡</span>
-                    <h3>CLARITY: Provide Direction</h3>
-                    <p>Your teams face AI noise, hype, and conflicting narratives. Using a structured "My Questions, My Answers" practice, this imperative helps you cut through confusion, provide direction, and create alignment.</p>
-                </div>
-
-                <div class="challenge-card">
-                    <span class="challenge-icon">⚖️</span>
-                    <h3>COMPETENCE: Master AI Tensions</h3>
-                    <p>Build expertise in navigating critical tradeoffs: Opportunity vs. Focus, Automation vs. Humanity, Exploration vs. Stability, Data vs. Judgment, and Fragmentation vs. Integration.</p>
+                    <h3>Competence</h3>
+                    <p>The practical skills to leverage AI effectively—not as a technologist, but as a leader who can identify opportunities, deploy AI appropriately, and drive measurable business outcomes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Our Framework -->
-    <section id="framework" class="framework-section">
+    <!-- Section 2: AI Leadership Operating System -->
+    <section class="framework-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Our Framework</span>
                 <h2>The AI Leadership <span class="gold-highlight">Operating System™</span></h2>
-                <p class="section-description">Clariem's proprietary AI-LOS™ provides practical, battle-tested frameworks for navigating AI transformation across three integrated leadership layers—from foundational capabilities through applied execution to frontier possibilities.</p>
+                <p class="section-description">A comprehensive framework that helps leaders build enduring foundations, navigate enterprise challenges, and explore emerging possibilities—all while overcoming the psychological and structural barriers that prevent organizations from capturing AI value.</p>
             </div>
-
             <div class="pyramid-container">
-                <img src="2025_11_20_AI_leadership_Pyramid.png" alt="AI Leadership Operating System™" class="pyramid-image">
+                <img src="2025_12_08_AI_LOS_trans.png" alt="AI Leadership Operating System Pyramid" class="pyramid-image">
             </div>
-
             <div class="framework-layers">
                 <div class="layer-card">
                     <div class="layer-number">1</div>
-                    <h3>Foundational Leadership</h3>
-                    <p>Build enduring organizational foundations—governance, culture, talent development, and change management capabilities that support sustainable AI transformation beyond individual projects.</p>
+                    <h3>Foundational AI Leadership</h3>
+                    <p>Build enduring foundations through personal effectiveness and team effectiveness. Master AI tools to buy back your time, build your "second brain," and extend that capability across your team.</p>
                 </div>
-
                 <div class="layer-card">
                     <div class="layer-number">2</div>
-                    <h3>Applied AI Leadership</h3>
-                    <p>Navigate the five core tensions of practical AI implementation: opportunity vs. focus, automation vs. humanity, exploration vs. stability, data vs. judgment, and fragmentation vs. integration.</p>
+                    <h3>Enterprise AI Leadership</h3>
+                    <p>Navigate the five critical tensions of AI leadership to deliver enterprise value. Balance competing priorities, overcome value delivery barriers, and institutionalize AI capabilities across the organization.</p>
                 </div>
-
                 <div class="layer-card">
                     <div class="layer-number">3</div>
-                    <h3>Frontier Leadership</h3>
-                    <p>Position your organization for emerging AI possibilities while managing current operations—balancing investment in proven capabilities with strategic exploration of transformative potential.</p>
+                    <h3>Frontier AI Leadership</h3>
+                    <p>Explore emerging possibilities at the cutting edge. As technology momentum accelerates, frontier leaders stay ahead of the curve, identifying strategic opportunities before they become obvious.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: The Five Leadership Tensions -->
-    <section id="tensions" class="tensions-section">
+    <!-- Section 3: The Five Tensions -->
+    <section class="tensions-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">The Five Tensions</span>
-                <h2>Applied AI Leadership <span class="gold-highlight">in Practice</span></h2>
-                <p class="section-description">Successful AI leaders don't eliminate tensions—they learn to navigate them with clarity. Our "My Questions, My Answers" methodology, supported by curated leadership dialogs and LMS-backed learning, gives you the frameworks to find your organization's optimal balance.</p>
+                <span class="section-label">Navigate Complexity</span>
+                <h2>The Five Tensions of <span class="gold-highlight">AI Leadership</span></h2>
             </div>
-
             <div class="tensions-intro">
-                <strong>These aren't problems to solve, they're ongoing organizational dynamics to manage.</strong> Through white-glove executive treatment and our curated asset library, you'll develop practical expertise in navigating each tension for your specific context.
+                <strong>These are the top challenges leaders face today.</strong> They represent strategic trade-offs that determine AI ROI. There are no "right" answers—only contextual decisions that leaders must navigate thoughtfully. These tensions may shift as the field matures, but mastering them now is essential for competitive advantage.
             </div>
-
             <div class="tensions-grid">
                 <div class="tension-card">
                     <div class="tension-header">
@@ -1081,7 +348,7 @@
         </div>
     </section>
 
-    <!-- Section 5: Why Partner With Us (moved from page 3) -->
+    <!-- Section 4: Why Partner With Us -->
     <section id="value" class="value-section">
         <div class="container">
             <div class="section-header">
@@ -1090,57 +357,57 @@
             </div>
             <div class="value-grid">
                 <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3>What Matters to YOU</h3>
-                    <p>AI-Accelerated Outcome-Based Consulting aligned to your specific use cases and context—not generic frameworks</p>
+                    <div class="value-icon">⚡</div>
+                    <h3>Buy Back Your Time</h3>
+                    <p>Build your second brain and reclaim 10+ hours per week—practical systems that deliver immediate time savings so you can focus on what only you can do</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon">⚡</div>
-                    <h3>Buy Back Your Time</h3>
-                    <p>Build your second brain and clone yourself—practical tools that deliver immediate time savings and sanity</p>
+                    <div class="value-icon">🎯</div>
+                    <h3>Measurable Outcomes</h3>
+                    <p>Every engagement has clear success metrics tied to business results. We guarantee outcomes—5+ hours/week verified savings or we continue calibration free</p>
                 </div>
 
                 <div class="value-card">
                     <div class="value-icon">🧭</div>
                     <h3>AI-LOS™ Framework</h3>
-                    <p>Proprietary AI Leadership Operating System gives you repeatable decision-making tools for navigating tensions</p>
+                    <p>Proprietary AI Leadership Operating System gives you repeatable decision-making tools for navigating the five tensions and driving transformation</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">📚</div>
+                    <h3>Platform & Community</h3>
+                    <p>LMS-backed content library, peer community of AI leaders, and ongoing support beyond the engagement—tools and connections that persist</p>
                 </div>
 
                 <div class="value-card">
                     <div class="value-icon">👥</div>
                     <h3>White-Glove Treatment</h3>
-                    <p>Executive-level support with curated asset library, LMS-backed learning, and "My Questions, My Answers" methodology</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">📊</div>
-                    <h3>Measurable Outcomes</h3>
-                    <p>Every engagement has clear success metrics tied to business results—we charge for deliverables, not hours</p>
+                    <p>Executive-level support with curated asset library and "My Questions, My Answers" methodology tailored to your specific context and challenges</p>
                 </div>
 
                 <div class="value-card">
                     <div class="value-icon">🏢</div>
                     <h3>Enterprise-Grade</h3>
-                    <p>Built specifically for Directors, Sr. Directors, Executive Directors, and VPs leading teams in large enterprises</p>
+                    <p>Built specifically for Directors through VPs leading teams in large enterprises. Platform-agnostic approach works with your existing AI tools</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 6: CTA -->
+    <!-- CTA Section -->
     <div class="cta-section">
         <div class="cta-content">
             <h2>Ready to Lead with AI Advantage?</h2>
-            <p>Discover how Transform Copilot helps you navigate AI leadership tensions—building your second brain, buying back time, and leading with confidence through practical frameworks and white-glove executive support</p>
+            <p>Discover how Transform Copilot helps you navigate AI leadership tensions—building your second brain, buying back time, and leading with courage, clarity, and competence through practical frameworks and white-glove executive support</p>
             <div class="cta-buttons">
-                <a href="2-how-we-help.html" class="btn btn-primary">
-                    See How We Help Leaders
+                <a href="2-our-approach.html" class="btn btn-primary">
+                    See Our Approach
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                 </a>
-                <a href="3-work-with-us.html" class="btn btn-secondary">Start a Conversation</a>
+                <a href="4-work-with-us.html" class="btn btn-secondary">Start a Conversation</a>
             </div>
         </div>
     </div>
@@ -1153,14 +420,15 @@
                     <img src="20251121_TClogo.jpg" alt="Transform Copilot">
                 </div>
                 <div class="footer-tagline">A Clariem Product</div>
-                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—AI-Accelerated Outcome-Based Consulting that blends consultant expertise, proprietary IP, and AI acceleration.</p>
+                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—your value delivery partner for AI transformation, making your job easier and saving you time.</p>
             </div>
             <div class="footer-section">
                 <h4>Platform</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">Why Transform Copilot</a></li>
-                    <li><a href="2-how-we-help.html">How We Help Leaders</a></li>
-                    <li><a href="3-work-with-us.html">Work With Us</a></li>
+                    <li><a href="2-our-approach.html">Our Approach</a></li>
+                    <li><a href="3-offerings.html">Offerings</a></li>
+                    <li><a href="4-work-with-us.html">Work With Us</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1184,24 +452,18 @@
     </footer>
 
     <script>
-        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navMenu = document.querySelector('nav ul');
-            
             if (mobileMenuBtn && navMenu) {
                 mobileMenuBtn.addEventListener('click', function() {
                     navMenu.classList.toggle('mobile-menu-open');
                 });
-                
-                // Close menu when clicking outside
                 document.addEventListener('click', function(event) {
                     if (!event.target.closest('nav')) {
                         navMenu.classList.remove('mobile-menu-open');
                     }
                 });
-                
-                // Close menu when clicking a link
                 navMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', function() {
                         navMenu.classList.remove('mobile-menu-open');

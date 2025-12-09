@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offerings | Transform Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --clariem-navy: #014184;
+            --clariem-blue: #5CBAE5;
+            --clariem-grey-blue: #3C6370;
+            --clariem-gold: #F59E0B;
+            --navy-dark: #012859;
+            --white: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --background: #F8FAFC;
+            --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%) 1;}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {display: flex; align-items: center; text-decoration: none;}
+        .logo img {height: 55px; width: auto;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem; align-items: center;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; position: relative;}
+        nav a:hover {color: var(--clariem-navy);}
+        nav a.active {color: var(--clariem-navy); font-weight: 700;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%);}
+        .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--clariem-navy);}
+        
+        /* Hero - Single smooth gradient */
+        .hero {background: linear-gradient(135deg, #E8F4FB 0%, #C5E4F3 50%, #A8DBF0 100%); padding: 6rem 2.5rem 5rem;}
+        .hero-content {max-width: 1320px; margin: 0 auto;}
+        .hero-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--white); color: var(--clariem-navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--clariem-gold); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.15;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-primary); max-width: 900px; line-height: 1.6;}
+        
+        /* Container */
+        .container {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem;}
+        section {padding: 6rem 0;}
+        .section-header {text-align: center; margin-bottom: 4.5rem;}
+        .section-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--clariem-gold); color: var(--navy-dark); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
+        h2 .gold-highlight {color: var(--clariem-gold);}
+        .section-description {font-size: 1.3rem; color: var(--text-secondary); max-width: 950px; margin: 0 auto; line-height: 1.7;}
+        
+        /* Pyramid Section */
+        .pyramid-section {background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%); padding: 4rem 0;}
+        .pyramid-container {max-width: 800px; margin: 0 auto; padding: 2rem; background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-radius: 20px; border: 3px solid var(--clariem-blue);}
+        .pyramid-image {width: 100%; height: auto; display: block;}
+        
+        /* Level Sections */
+        .level-section {padding: 5rem 0;}
+        .level-header {max-width: 900px; margin: 0 auto 3rem; text-align: center;}
+        .level-badge {display: inline-block; padding: 0.8rem 1.8rem; border-radius: 30px; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; background: var(--clariem-gold); color: var(--navy-dark); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        .level-header h2 {margin-bottom: 1rem;}
+        .level-header p {font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);}
+        
+        /* Offering Cards */
+        .offerings-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; margin-bottom: 3rem;}
+        .offering-card {background: var(--white); padding: 2.5rem; border-radius: 20px; border: 3px solid var(--border); transition: all 0.3s; position: relative;}
+        .offering-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%); border-radius: 20px 20px 0 0;}
+        .offering-card:hover {box-shadow: 0 15px 50px rgba(1, 65, 132, 0.12); transform: translateY(-5px);}
+        .offering-icon {width: 70px; height: 70px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        .offering-card h3 {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.8rem;}
+        .offering-card .subtitle {font-size: 1rem; color: var(--clariem-gold); font-weight: 600; margin-bottom: 1rem;}
+        .offering-card p {color: var(--text-secondary); line-height: 1.7; font-size: 1.05rem; margin-bottom: 1.5rem;}
+        .offering-features {list-style: none; padding: 0;}
+        .offering-features li {padding: 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--text-primary); font-size: 0.95rem; display: flex; align-items: start; gap: 0.8rem;}
+        .offering-features li:last-child {border-bottom: none;}
+        .offering-features li span {color: var(--clariem-gold); font-weight: 700;}
+        
+        /* Highlight Boxes */
+        .highlight-box {max-width: 1000px; margin: 0 auto 3rem; padding: 2.5rem; background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 16px; border: 2px solid var(--clariem-gold);}
+        .highlight-box h3 {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1.5rem; text-align: center;}
+        .highlight-box > p {font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;}
+        .highlight-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;}
+        .highlight-item h4 {font-size: 1.1rem; font-weight: 700; color: var(--clariem-navy); margin-bottom: 0.5rem;}
+        .highlight-item p {color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;}
+        
+        /* Seven Systems Box */
+        .systems-box {max-width: 1000px; margin: 0 auto 3rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(1, 65, 132, 0.05) 0%, rgba(92, 186, 229, 0.1) 100%); border-radius: 16px; border: 2px solid var(--clariem-navy);}
+        .systems-box h3 {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1rem; text-align: center;}
+        .systems-box > p {font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;}
+        .systems-grid {display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;}
+        .system-item {background: var(--white); padding: 1.5rem; border-radius: 12px; text-align: center; border: 2px solid var(--border); transition: all 0.3s; width: 180px; flex-shrink: 0;}
+        .system-item:hover {border-color: var(--clariem-gold); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(1, 65, 132, 0.1);}
+        .system-item .system-icon {font-size: 2rem; margin-bottom: 0.8rem;}
+        .system-item h4 {font-size: 1rem; font-weight: 700; color: var(--clariem-navy);}
+        .empowerment-message {margin-top: 2rem; padding: 1.5rem; background: var(--white); border-radius: 12px; border-left: 4px solid var(--clariem-gold);}
+        .empowerment-message p {font-size: 1.05rem; color: var(--text-primary); line-height: 1.7; font-style: italic;}
+        
+        /* Process Cards */
+        .process-cards {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem;}
+        .process-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); border-left: 5px solid var(--clariem-navy); transition: all 0.3s; text-align: center;}
+        .process-card:hover {border-left-color: var(--clariem-gold); transform: translateY(-5px); box-shadow: 0 10px 35px rgba(1, 65, 132, 0.12);}
+        .process-icon {font-size: 2.5rem; margin-bottom: 1rem;}
+        .process-card h3 {font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--navy-dark);}
+        .process-card p {color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;}
+        
+        /* Value Barrier Box */
+        .barrier-box {max-width: 1000px; margin: 0 auto 3rem; padding: 2.5rem; background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 16px; border: 2px solid var(--clariem-gold);}
+        .barrier-box h3 {font-size: 1.5rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 1rem; text-align: center;}
+        .barrier-box > p {font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;}
+        
+        /* Collapsible Offering Cards */
+        .collapsible-card {background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); border-radius: 20px; border: 3px solid var(--border); margin-bottom: 1.5rem; overflow: hidden; transition: all 0.3s;}
+        .collapsible-card:hover {border-color: var(--clariem-navy);}
+        .collapsible-header {padding: 2rem 2.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;}
+        .collapsible-header-content {display: flex; align-items: center; gap: 1.5rem; flex: 1;}
+        .collapsible-icon {width: 60px; height: 60px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--white); flex-shrink: 0; box-shadow: 0 4px 15px rgba(1, 65, 132, 0.3);}
+        .collapsible-title h3 {font-size: 1.4rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.3rem;}
+        .collapsible-title p {font-size: 0.95rem; color: var(--text-secondary);}
+        .collapsible-toggle {width: 40px; height: 40px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.5rem; font-weight: 700; flex-shrink: 0; transition: transform 0.3s;}
+        .collapsible-card.active .collapsible-toggle {transform: rotate(45deg);}
+        .collapsible-content {max-height: 0; overflow: hidden; transition: max-height 0.4s ease;}
+        .collapsible-card.active .collapsible-content {max-height: 1000px;}
+        .collapsible-body {padding: 0 2.5rem 2.5rem;}
+        .collapsible-body p {font-size: 1.1rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 2rem;}
+        .offering-details {display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;}
+        .detail-item {padding: 1.5rem; background: var(--white); border-radius: 12px; border: 2px solid var(--border); border-left: 4px solid var(--clariem-navy);}
+        .detail-item h4 {font-size: 1rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.5rem;}
+        .detail-item p {font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;}
+        .offering-highlights {display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;}
+        .highlight-check {display: flex; align-items: start; gap: 0.8rem; padding: 1rem; background: var(--white); border-radius: 10px; border: 1px solid var(--border);}
+        .highlight-check span {color: var(--clariem-gold); font-weight: 700; font-size: 1.2rem;}
+        .highlight-check p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5;}
+        .highlight-check strong {color: var(--navy-dark);}
+        
+        /* Frontier Card */
+        .frontier-card {background: var(--white); padding: 3rem; border-radius: 20px; border: 3px solid var(--border); max-width: 900px; margin: 0 auto; position: relative;}
+        .frontier-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%); border-radius: 20px 20px 0 0;}
+        .frontier-card:hover {box-shadow: 0 15px 50px rgba(1, 65, 132, 0.12);}
+        
+        /* CTA Section */
+        .cta-section {background: linear-gradient(135deg, var(--navy-dark) 0%, var(--clariem-navy) 100%); padding: 5rem 2.5rem; position: relative; overflow: hidden;}
+        .cta-section::before {content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(92, 186, 229, 0.2) 0%, transparent 70%); animation: pulse 6s ease-in-out infinite;}
+        @keyframes pulse {0%, 100% {transform: scale(1); opacity: 1;} 50% {transform: scale(1.1); opacity: 0.8;}}
+        .cta-content {max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1;}
+        .cta-content h2 {color: var(--white); margin-bottom: 1.5rem;}
+        .cta-content p {color: rgba(255,255,255,0.9); font-size: 1.3rem; margin-bottom: 2.5rem; line-height: 1.7;}
+        .cta-buttons {display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;}
+        .btn {padding: 1rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 10px; border: none; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;}
+        .btn-primary {background: var(--clariem-gold); color: var(--navy-dark); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);}
+        .btn-primary:hover {box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4); transform: translateY(-2px);}
+        .btn-secondary {background: transparent; color: var(--white); border: 2px solid var(--white);}
+        .btn-secondary:hover {background: var(--white); color: var(--navy-dark); transform: translateY(-2px);}
+        
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255,255,255,0.8); padding: 4rem 2.5rem 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;}
+        .footer-logo img {height: 50px; margin-bottom: 1rem;}
+        .footer-tagline {font-size: 1rem; font-weight: 600; color: var(--clariem-gold); margin-bottom: 1rem;}
+        .footer-description {font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);}
+        .footer-section h4 {color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; transition: color 0.3s;}
+        .footer-links a:hover {color: var(--clariem-gold);}
+        .footer-bottom {text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.6);}
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .offerings-grid {grid-template-columns: 1fr;}
+            .highlight-grid {grid-template-columns: 1fr;}
+            .system-item {width: 160px;}
+            .process-cards {grid-template-columns: 1fr;}
+            .offering-details {grid-template-columns: 1fr;}
+            .offering-highlights {grid-template-columns: 1fr;}
+            .footer-content {grid-template-columns: 1fr 1fr;}
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn {display: block;}
+            nav ul {display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 2rem; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
+            nav ul.mobile-menu-open {display: flex;}
+            nav a.active::after {display: none;}
+            .hero h1 {font-size: 2.5rem;}
+            .hero-subtitle {font-size: 1.2rem;}
+            h2 {font-size: 2.2rem;}
+            .system-item {width: 140px;}
+            .collapsible-header {flex-direction: column; text-align: center;}
+            .collapsible-header-content {flex-direction: column;}
+            .footer-content {grid-template-columns: 1fr;}
+            .cta-buttons {flex-direction: column; align-items: center;}
+        }
+        @media (max-width: 480px) {
+            .systems-grid {gap: 1rem;}
+            .system-item {width: 100%; max-width: 200px;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="20251121_TClogo_trans.png" alt="Transform Copilot">
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul>
+                <li><a href="index.html">Why Transform Copilot</a></li>
+                <li><a href="2-our-approach.html">Our Approach</a></li>
+                <li><a href="3-offerings.html" class="active">Offerings</a></li>
+                <li><a href="4-work-with-us.html">Work With Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Our Offerings</span>
+            <h1>Structured Around the <span class="highlight">AI-LOS™ Pyramid</span></h1>
+            <p class="hero-subtitle">Our offerings align to the three levels of the AI Leadership Operating System—from foundational personal and team effectiveness, through enterprise value delivery, to frontier strategic thinking.</p>
+        </div>
+    </section>
+
+    <!-- Pyramid Visual Section -->
+    <section class="pyramid-section">
+        <div class="container">
+            <div class="pyramid-container">
+                <img src="2025_12_08_AI_LOS_trans.png" alt="AI Leadership Operating System Pyramid" class="pyramid-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Level 1: Foundational AI Leadership -->
+    <section class="level-section" style="background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);">
+        <div class="container">
+            <div class="level-header">
+                <span class="level-badge">Foundational AI Leadership</span>
+                <h2>Personal & Team <span class="gold-highlight">Effectiveness</span></h2>
+                <p>Build your "second brain" and extend AI capability across your team. These offerings focus on enduring foundations—personal productivity systems that buy back your time and team workflows that amplify collective capability.</p>
+            </div>
+            
+            <div class="offerings-grid">
+                <div class="offering-card">
+                    <div class="offering-icon">🧠</div>
+                    <h3>LOS Foundation: Personal Effectiveness</h3>
+                    <div class="subtitle">Build Your Second Brain</div>
+                    <p>Complete AI operating system installation for individual leaders. We configure AI to match how you naturally think and work—your communication style, decision patterns, and strategic context—so you get a true extension of yourself, not a generic tool.</p>
+                    <ul class="offering-features">
+                        <li><span>✓</span> Personal DNA assessment and AI calibration</li>
+                        <li><span>✓</span> Business DNA mapping for context-aware systems</li>
+                        <li><span>✓</span> Use cases and prompts tailored to your roles and responsibilities</li>
+                        <li><span>✓</span> 10+ hours/week verified time savings (guaranteed)</li>
+                        <li><span>✓</span> Ongoing LMS access and community membership</li>
+                    </ul>
+                </div>
+                
+                <div class="offering-card">
+                    <div class="offering-icon">👥</div>
+                    <h3>LOS Foundation: Team Effectiveness</h3>
+                    <div class="subtitle">Amplify Your Team's Capability</div>
+                    <p>Extend AI capability across your leadership team with shared workflows and aligned systems. Build operational workflows prioritized by what consumes your team's time—turning AI from occasional helper into essential workhorse for daily work.</p>
+                    <ul class="offering-features">
+                        <li><span>✓</span> Team-wide AI assessment and workflow mapping</li>
+                        <li><span>✓</span> Shared operational systems configured for your team</li>
+                        <li><span>✓</span> Seven Team Effectiveness Toolkits installation</li>
+                        <li><span>✓</span> Cross-functional AI collaboration frameworks</li>
+                        <li><span>✓</span> Team performance metrics and tracking</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- DNA Difference Highlight -->
+            <div class="highlight-box">
+                <h3>The DNA Difference</h3>
+                <p>Our approach goes beyond generic AI prompts. We start with deep diagnosis, then build personalized systems that persist.</p>
+                <div class="highlight-grid">
+                    <div class="highlight-item">
+                        <h4>Personal DNA</h4>
+                        <p>Your communication style, cognitive preferences, and decision-making patterns. We configure AI to match how you naturally think and work—not force you to adapt to generic prompts.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Business DNA</h4>
+                        <p>Your strategic priorities, stakeholder landscape, and operating rhythms. Systems are calibrated to your specific business context—your goals, your constraints, your opportunities.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Use Cases & Prompts</h4>
+                        <p>Based on your roles and responsibilities, we identify specific use cases where AI creates the most value and build tailored prompts that work for your actual work, not hypothetical scenarios.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Operational Workflows</h4>
+                        <p>We build operational workflows prioritized by what consumes time and can be relieved by AI. These become the team's standard operating procedures—AI embedded in how work actually gets done.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seven Systems Box -->
+            <div class="systems-box">
+                <h3>Seven Team Effectiveness Toolkits</h3>
+                <p>Bring AI into the flow of work—not as occasional dabbling, but as your team's workhorse and strategic advisor. We install seven operational systems that transform how your team operates daily:</p>
+                <div class="systems-grid">
+                    <div class="system-item">
+                        <div class="system-icon">💬</div>
+                        <h4>Communication Engine</h4>
+                    </div>
+                    <div class="system-item">
+                        <div class="system-icon">📅</div>
+                        <h4>Meeting Machine</h4>
+                    </div>
+                    <div class="system-item">
+                        <div class="system-icon">📄</div>
+                        <h4>Document Factory</h4>
+                    </div>
+                    <div class="system-item">
+                        <div class="system-icon">🎯</div>
+                        <h4>Decision Cockpit</h4>
+                    </div>
+                    <div class="system-item">
+                        <div class="system-icon">👥</div>
+                        <h4>People Operations Kit</h4>
+                    </div>
+                    <div class="system-item">
+                        <div class="system-icon">📊</div>
+                        <h4>Strategy Toolkit</h4>
+                    </div>
+                    <div class="system-item">
+                        <div class="system-icon">📚</div>
+                        <h4>Learning System</h4>
+                    </div>
+                </div>
+                <div class="empowerment-message">
+                    <p>This is the age where domain experts are empowered—technology has become accessible enough for anyone to put it to work. AI should be both your <strong>workhorse</strong> (handling routine tasks at scale) and your <strong>strategic advisor</strong> (providing analysis and insights). It's not enough to dabble with AI occasionally; we help you make AI integral to how your team delivers value every day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Level 2: Enterprise AI Leadership -->
+    <section class="level-section" style="background: var(--white);">
+        <div class="container">
+            <div class="level-header">
+                <span class="level-badge">Enterprise AI Leadership</span>
+                <h2>Transform Your <span class="gold-highlight">Execution Engine</span></h2>
+                <p>Navigate the five tensions of AI leadership to drive organizational transformation. We recommend leaders start by making their execution engine AI-powered—the critical processes that convert strategy into results.</p>
+                <p style="margin-top: 1rem; font-size: 1.1rem; color: var(--text-primary);">We identify <strong>three key processes</strong> that form your execution engine and optimize them with AI acceleration. The objective: enable dynamic strategy execution where AI powers the high-value processes that deliver measurable enterprise outcomes.</p>
+            </div>
+            
+            <!-- Process Cards -->
+            <div class="process-cards">
+                <div class="process-card">
+                    <div class="process-icon">📊</div>
+                    <h3>Annual Planning & Strategy Execution</h3>
+                    <p>Align AI initiatives to your financial calendar with quarterly reviews, ensuring execution delivers measurable outcomes throughout the year</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon">🏗️</div>
+                    <h3>AI Operating Model</h3>
+                    <p>Define how AI becomes part of your team and org structure, sharing workload with team members and leaders through clear role design</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon">⭐</div>
+                    <h3>AI Center of Excellence</h3>
+                    <p>Utilize AI most effectively and improve continuously through governance, standards, knowledge management, and capability development</p>
+                </div>
+            </div>
+            
+            <!-- Collapsible Offerings -->
+            <div class="collapsible-card">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <div class="collapsible-header-content">
+                        <div class="collapsible-icon">📊</div>
+                        <div class="collapsible-title">
+                            <h3>Annual Planning & Strategy Execution</h3>
+                            <p>Fiscal Year Partnership</p>
+                        </div>
+                    </div>
+                    <div class="collapsible-toggle">+</div>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-body">
+                        <p>Leaders are accountable for results aligned to their company's fiscal year. We provide strategic partnership throughout your annual cycle—from planning through execution to results review—ensuring AI initiatives drive measurable outcomes quarter by quarter.</p>
+                        
+                        <div class="offering-details">
+                            <div class="detail-item">
+                                <h4>Plan the Work</h4>
+                                <p>Integrate AI initiatives into annual goals, priorities, and resource allocation</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4>Execute the Work</h4>
+                                <p>Quarterly reviews, course correction, continuous optimization aligned to objectives</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4>Deliver Results</h4>
+                                <p>Board readiness, stakeholder communications, measurable business outcomes</p>
+                            </div>
+                        </div>
+
+                        <div class="offering-highlights">
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Fiscal Year Alignment:</strong> Synchronize AI transformation with annual planning rhythm and accountability</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Quarterly Business Reviews:</strong> Assess progress, adjust strategy, ensure delivery against commitments</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Executive Readiness:</strong> Preparation for board presentations, investor updates, stakeholder communications</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Continuous Value:</strong> Ongoing optimization as market conditions, priorities, and capabilities evolve</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible-card">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <div class="collapsible-header-content">
+                        <div class="collapsible-icon">🏗️</div>
+                        <div class="collapsible-title">
+                            <h3>AI Operating Models & Job Redesign</h3>
+                            <p>Organization Design for AI Era</p>
+                        </div>
+                    </div>
+                    <div class="collapsible-toggle">+</div>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-body">
+                        <p>How do we structure our organization as AI becomes part of the team? Define work scope for each person, team, and AI agent. Clarify who does what and how we interact. Design dynamic models that adjust as capabilities evolve—grounded in Jobs-to-Be-Done methodology.</p>
+                        
+                        <div class="offering-details">
+                            <div class="detail-item">
+                                <h4>Structure Organization</h4>
+                                <p>Define roles, responsibilities, and interaction models with AI as team member</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4>Job Matching by JTBD</h4>
+                                <p>Align work to jobs-to-be-done framework ensuring right work for humans and AI</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4>Dynamic Adjustment</h4>
+                                <p>Create flexible models that evolve as AI capabilities and business needs change</p>
+                            </div>
+                        </div>
+
+                        <div class="offering-highlights">
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Clarity on Work Scope:</strong> Define what humans excel at vs. what AI should handle for optimal outcomes</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Interaction Design:</strong> Create workflows and protocols for effective human-AI collaboration</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Jobs-to-Be-Done Framework:</strong> Match work to capabilities ensuring satisfaction for humans and success for AI</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Change Management:</strong> Address psychological undercurrents and talent concerns throughout transition</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible-card">
+                <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <div class="collapsible-header-content">
+                        <div class="collapsible-icon">⭐</div>
+                        <div class="collapsible-title">
+                            <h3>AI Center of Excellence</h3>
+                            <p>Institutional Capability Building</p>
+                        </div>
+                    </div>
+                    <div class="collapsible-toggle">+</div>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-body">
+                        <p>Stand up and run a best-in-class AI Center of Excellence for improving performance of your team, function, and whole organization. Build the institutional muscle for continuous improvement—governance, standards, knowledge management, and capability development.</p>
+                        
+                        <div class="offering-details">
+                            <div class="detail-item">
+                                <h4>COE Design</h4>
+                                <p>Structure, charter, governance model, and success metrics for your AI COE</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4>Capability Building</h4>
+                                <p>Training programs, knowledge assets, best practices, and continuous learning systems</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4>Performance Improvement</h4>
+                                <p>Systematic approach to identifying opportunities and scaling successes across organization</p>
+                            </div>
+                        </div>
+
+                        <div class="offering-highlights">
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Governance & Standards:</strong> Establish frameworks for responsible AI deployment across organization</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Knowledge Management:</strong> Capture and share learnings to accelerate capability development</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Continuous Improvement:</strong> Build institutional rhythm for identifying, implementing, scaling AI opportunities</p>
+                            </div>
+                            <div class="highlight-check">
+                                <span>✓</span>
+                                <p><strong>Holistic Performance:</strong> Improve outcomes at team, function, and organizational levels systematically</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Value Capture Barrier Box -->
+            <div class="barrier-box">
+                <h3>Understanding the Value Capture Barrier</h3>
+                <p>Most AI initiatives fail not because the technology doesn't work, but because organizations can't capture the value. Two forces conspire against successful adoption:</p>
+                <div class="highlight-grid">
+                    <div class="highlight-item">
+                        <h4>Psychological Undercurrents</h4>
+                        <p>Fear of job displacement, skepticism about AI capabilities, resistance to changing established workflows, and anxiety about being "replaced" create invisible barriers that prevent adoption even when the technology is ready.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Structural Barriers to Change</h4>
+                        <p>Organizational silos, misaligned incentives, rigid processes, legacy systems, and governance gaps create friction that stops AI initiatives from scaling beyond pilots into institutional capability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Level 3: Frontier AI Leadership -->
+    <section class="level-section" style="background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%);">
+        <div class="container">
+            <div class="level-header">
+                <span class="level-badge">Frontier AI Leadership</span>
+                <h2>Emerging <span class="gold-highlight">Possibilities</span></h2>
+                <p>Stay ahead of the curve with strategic thinking that explores the frontier of AI capability. As technology momentum accelerates, leaders at all levels need trusted partners who can help them identify innovative opportunities and navigate complexity with clarity.</p>
+            </div>
+            
+            <div class="frontier-card">
+                <div class="offering-icon" style="margin-bottom: 1.5rem;">🔭</div>
+                <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.8rem;">Strategic Advisory & Frontier Thinking</h3>
+                <div class="subtitle" style="font-size: 1.1rem; font-weight: 700; color: var(--clariem-gold); margin-bottom: 0.5rem;">For Leaders Driving Innovation</div>
+                <div style="font-size: 1rem; color: var(--clariem-navy); font-weight: 600; margin-bottom: 1.5rem; font-style: italic;">Focus on what matters most to you, right now.</div>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 2rem;">For any leader responsible for thinking about new, innovative ways to leverage AI—whether you're exploring strategic opportunities, evaluating emerging technologies, or charting a path through uncertainty. We bring objective thinking, the latest insights, and clarity to help you navigate complexity and position your organization for what's next.</p>
+                <ul class="offering-features" style="max-width: 100%;">
+                    <li style="align-items: flex-start;"><span style="flex-shrink: 0;">✓</span> <div><strong>Futurist Perspective:</strong> Understand where AI is heading and what it means for your industry, function, and role</div></li>
+                    <li style="align-items: flex-start;"><span style="flex-shrink: 0;">✓</span> <div><strong>Strategic Opportunity Identification:</strong> Spot possibilities before they become obvious and evaluate them rigorously</div></li>
+                    <li style="align-items: flex-start;"><span style="flex-shrink: 0;">✓</span> <div><strong>Objective Sounding Board:</strong> Think through hard questions with an experienced partner who brings outside perspective</div></li>
+                    <li style="align-items: flex-start;"><span style="flex-shrink: 0;">✓</span> <div><strong>Latest Thinking:</strong> Stay current on AI developments, best practices, and emerging patterns across industries</div></li>
+                    <li style="align-items: flex-start;"><span style="flex-shrink: 0;">✓</span> <div><strong>Clarity Through Complexity:</strong> Cut through hype and confusion to understand what matters and what to do about it</div></li>
+                    <li style="align-items: flex-start;"><span style="flex-shrink: 0;">✓</span> <div><strong>Strategic Project Support:</strong> Partner on specific initiatives that require frontier thinking and AI expertise</div></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>What Matters Most to You, Right Now?</h2>
+            <p>Start with what matters most. Whether you're building foundational AI capability, driving enterprise transformation, or exploring frontier opportunities—let's have a conversation about your priorities.</p>
+            <div class="cta-buttons">
+                <a href="4-work-with-us.html" class="btn btn-primary">
+                    Start the Conversation
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="2-our-approach.html" class="btn btn-secondary">Learn About Our Approach</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="20251121_TClogo.jpg" alt="Transform Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—your value delivery partner for AI transformation, making your job easier and saving you time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Transform Copilot</a></li>
+                    <li><a href="2-our-approach.html">Our Approach</a></li>
+                    <li><a href="3-offerings.html">Offerings</a></li>
+                    <li><a href="4-work-with-us.html">Work With Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Clariem Suite</h4>
+                <ul class="footer-links">
+                    <li><a href="http://www.launchcopilot.ai">Launch Copilot</a></li>
+                    <li><a href="http://www.clariem.com">About Clariem</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Clariem Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleCollapsible(element) {
+            const card = element.parentElement;
+            const isActive = card.classList.contains('active');
+            
+            // Close all cards
+            document.querySelectorAll('.collapsible-card').forEach(c => {
+                c.classList.remove('active');
+            });
+            
+            // Open clicked card if it wasn't active
+            if (!isActive) {
+                card.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

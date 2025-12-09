@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us | Transform Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        :root {
+            --clariem-navy: #014184;
+            --clariem-blue: #5CBAE5;
+            --clariem-grey-blue: #3C6370;
+            --clariem-gold: #F59E0B;
+            --navy-dark: #012859;
+            --white: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --background: #F8FAFC;
+            --border: #E2E8F0;
+        }
+        body {font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--text-primary); background: var(--white); scroll-behavior: smooth;}
+        
+        /* Header */
+        header {background: var(--white); padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid transparent; border-image: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%) 1;}
+        nav {max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; display: flex; justify-content: space-between; align-items: center;}
+        .logo {display: flex; align-items: center; text-decoration: none;}
+        .logo img {height: 55px; width: auto;}
+        nav ul {list-style: none; display: flex; gap: 2.5rem; align-items: center;}
+        nav a {color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; position: relative;}
+        nav a:hover {color: var(--clariem-navy);}
+        nav a.active {color: var(--clariem-navy); font-weight: 700;}
+        nav a.active::after {content: ''; position: absolute; bottom: -1.5rem; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--clariem-blue) 0%, var(--clariem-gold) 100%);}
+        .mobile-menu-btn {display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--clariem-navy);}
+        
+        /* Hero - Single smooth gradient */
+        .hero {background: linear-gradient(135deg, #E8F4FB 0%, #C5E4F3 50%, #A8DBF0 100%); padding: 6rem 2.5rem 5rem; text-align: center;}
+        .hero-content {max-width: 1000px; margin: 0 auto;}
+        .hero-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--white); color: var(--clariem-navy); border-radius: 30px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; border: 2px solid var(--clariem-gold); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        .hero h1 {font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--navy-dark); letter-spacing: -0.03em; line-height: 1.15;}
+        .hero h1 .highlight {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+        .hero-subtitle {font-size: 1.5rem; color: var(--text-primary); max-width: 800px; margin: 0 auto; line-height: 1.6;}
+        
+        /* Container */
+        .container {max-width: 1320px; margin: 0 auto; padding: 5rem 2.5rem;}
+        .section-header {text-align: center; margin-bottom: 4.5rem;}
+        .section-label {display: inline-block; padding: 0.7rem 1.4rem; background: var(--clariem-gold); color: var(--navy-dark); border-radius: 25px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);}
+        h2 {font-size: 3rem; font-weight: 800; color: var(--navy-dark); margin-bottom: 1.2rem; letter-spacing: -0.025em; line-height: 1.2;}
+        h2 .gold-highlight {color: var(--clariem-gold);}
+        .section-description {font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.7;}
+
+        /* Engagement Options */
+        .engagement-options {background: linear-gradient(180deg, var(--white) 0%, var(--background) 100%); padding: 6rem 2.5rem;}
+        .options-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; max-width: 1320px; margin: 0 auto;}
+        .option-card {background: var(--white); padding: 3rem; border-radius: 16px; border: 2px solid var(--border); text-align: center; transition: all 0.3s; position: relative;}
+        .option-card::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--clariem-navy) 0%, var(--clariem-gold) 100%); border-radius: 16px 16px 0 0;}
+        .option-card:hover {border-color: var(--clariem-navy); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(1, 65, 132, 0.15);}
+        .option-icon {width: 80px; height: 80px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.5rem; color: var(--white); box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        .option-card h3 {font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--navy-dark);}
+        .option-card p {font-size: 1rem; color: var(--text-secondary); line-height: 1.7;}
+
+        /* Form Section */
+        .form-section {background: var(--white); padding: 6rem 2.5rem;}
+        .form-container {max-width: 900px; margin: 0 auto; background: linear-gradient(135deg, var(--background) 0%, var(--white) 100%); padding: 4rem; border-radius: 20px; border: 3px solid var(--clariem-navy); box-shadow: 0 8px 30px rgba(1, 65, 132, 0.12);}
+        .form-container h2 {text-align: center; margin-bottom: 1rem;}
+        .form-container .intro-text {text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem; line-height: 1.7;}
+        
+        /* HubSpot Form Styling */
+        #hubspot-form-container {min-height: 400px;}
+        #hubspot-form-container .hs-form {max-width: 100%;}
+        #hubspot-form-container .hs-form-field {margin-bottom: 1.5rem;}
+        #hubspot-form-container label {display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--navy-dark); font-size: 1rem;}
+        #hubspot-form-container input, #hubspot-form-container textarea, #hubspot-form-container select {width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s; background: var(--white);}
+        #hubspot-form-container input:focus, #hubspot-form-container textarea:focus, #hubspot-form-container select:focus {outline: none; border-color: var(--clariem-navy);}
+        #hubspot-form-container textarea {min-height: 120px; resize: vertical;}
+        #hubspot-form-container .hs-button {background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); color: var(--white); padding: 1.2rem 2.5rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 1rem; box-shadow: 0 6px 20px rgba(1, 65, 132, 0.3);}
+        #hubspot-form-container .hs-button:hover {box-shadow: 0 8px 30px rgba(1, 65, 132, 0.4); transform: translateY(-2px);}
+        #hubspot-form-container .hs-error-msgs {list-style: none; padding: 0; margin: 0.5rem 0 0 0;}
+        #hubspot-form-container .hs-error-msg {color: #dc2626; font-size: 0.9rem;}
+        #hubspot-form-container .hs-richtext {font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;}
+        #hubspot-form-container .legal-consent-container {margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);}
+        #hubspot-form-container .hs-form-booleancheckbox-display {display: flex; align-items: start; gap: 0.8rem;}
+        #hubspot-form-container .hs-form-booleancheckbox-display input {width: auto; margin-top: 0.3rem;}
+        #hubspot-form-container .hs-form-booleancheckbox-display span {font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;}
+
+        /* Contact Info Box */
+        .contact-info-box {max-width: 900px; margin: 3rem auto 0; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, #E8F4FB 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 16px; border: 2px solid var(--clariem-gold);}
+        .contact-item {display: flex; align-items: center; gap: 1rem; flex: 1;}
+        .contact-icon {font-size: 2rem;}
+        .contact-content h4 {font-size: 1rem; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.3rem;}
+        .contact-content p {font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5;}
+        .contact-content a {color: var(--clariem-navy); font-weight: 600; text-decoration: none; transition: color 0.3s;}
+        .contact-content a:hover {color: var(--clariem-gold);}
+        .contact-divider {width: 2px; height: 60px; background: var(--clariem-gold); opacity: 0.5;}
+
+        /* FAQ Section */
+        .faq-section {background: linear-gradient(180deg, var(--background) 0%, var(--white) 100%); padding: 6rem 2.5rem;}
+        .faq-container {max-width: 900px; margin: 0 auto;}
+        .faq-header {text-align: center; margin-bottom: 3rem;}
+        .faq-item {background: var(--white); border-radius: 12px; border: 2px solid var(--border); margin-bottom: 1rem; overflow: hidden; transition: all 0.3s;}
+        .faq-item:hover {border-color: var(--clariem-navy);}
+        .faq-item.active {border-color: var(--clariem-navy); box-shadow: 0 8px 25px rgba(1, 65, 132, 0.1);}
+        .faq-question {padding: 1.5rem 2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;}
+        .faq-question h3 {font-size: 1.1rem; font-weight: 600; color: var(--navy-dark); margin: 0;}
+        .faq-toggle {width: 30px; height: 30px; background: linear-gradient(135deg, var(--clariem-navy) 0%, var(--clariem-blue) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.3rem; font-weight: 700; flex-shrink: 0; transition: transform 0.3s;}
+        .faq-item.active .faq-toggle {transform: rotate(45deg);}
+        .faq-answer {max-height: 0; overflow: hidden; transition: max-height 0.4s ease;}
+        .faq-item.active .faq-answer {max-height: 500px;}
+        .faq-answer-content {padding: 0 2rem 1.5rem; color: var(--text-secondary); line-height: 1.8; font-size: 1rem;}
+
+        /* Footer */
+        footer {background: var(--navy-dark); color: rgba(255,255,255,0.8); padding: 4rem 2.5rem 2rem;}
+        .footer-content {max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;}
+        .footer-logo img {height: 50px; margin-bottom: 1rem;}
+        .footer-tagline {font-size: 1rem; font-weight: 600; color: var(--clariem-gold); margin-bottom: 1rem;}
+        .footer-description {font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);}
+        .footer-section h4 {color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;}
+        .footer-links {list-style: none;}
+        .footer-links li {margin-bottom: 0.8rem;}
+        .footer-links a {color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.95rem; transition: color 0.3s;}
+        .footer-links a:hover {color: var(--clariem-gold);}
+        .footer-bottom {text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.6);}
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .options-grid {grid-template-columns: 1fr;}
+            .footer-content {grid-template-columns: 1fr 1fr;}
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn {display: block;}
+            nav ul {display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 2rem; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
+            nav ul.mobile-menu-open {display: flex;}
+            nav a.active::after {display: none;}
+            .hero h1 {font-size: 2.5rem;}
+            .hero-subtitle {font-size: 1.2rem;}
+            h2 {font-size: 2.2rem;}
+            .form-container {padding: 2rem;}
+            .contact-info-box {flex-direction: column; text-align: center; gap: 1.5rem;}
+            .contact-item {flex-direction: column; text-align: center;}
+            .contact-divider {width: 80%; height: 2px;}
+            .footer-content {grid-template-columns: 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="20251121_TClogo_trans.png" alt="Transform Copilot">
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul>
+                <li><a href="index.html">Why Transform Copilot</a></li>
+                <li><a href="2-our-approach.html">Our Approach</a></li>
+                <li><a href="3-offerings.html">Offerings</a></li>
+                <li><a href="4-work-with-us.html" class="active">Work With Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Let's Connect</span>
+            <h1>Partner With Us for <span class="highlight">AI Leadership</span></h1>
+            <p class="hero-subtitle">Whether you're ready to transform your personal effectiveness, accelerate your team, or drive enterprise-wide AI adoption—let's start a conversation about where you are and where you want to go.</p>
+        </div>
+    </section>
+
+    <!-- Engagement Options -->
+    <section class="engagement-options">
+        <div class="section-header">
+            <span class="section-label">Ways to Engage</span>
+            <h2>Choose Your <span class="gold-highlight">Path</span></h2>
+        </div>
+        <div class="options-grid">
+            <div class="option-card">
+                <div class="option-icon">💬</div>
+                <h3>Discovery Conversation</h3>
+                <p>A 30-minute exploratory call to understand your situation, discuss possibilities, and determine if there's a fit. No commitment, just honest conversation about your AI leadership journey.</p>
+            </div>
+            <div class="option-card">
+                <div class="option-icon">🎯</div>
+                <h3>Pilot Engagement</h3>
+                <p>Start with a focused engagement to prove value before broader commitment. Experience our methodology, see measurable results, and build confidence in the partnership.</p>
+            </div>
+            <div class="option-card">
+                <div class="option-icon">🤝</div>
+                <h3>Strategic Partnership</h3>
+                <p>For organizations ready to transform at scale—ongoing advisory relationship, multi-leader programs, and enterprise transformation initiatives with sustained support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Start the <span class="gold-highlight">Conversation</span></h2>
+            <p class="intro-text">Share a bit about yourself and what you're looking to accomplish. We'll respond within one business day to schedule a discovery conversation.</p>
+            
+            <div id="hubspot-form-container">
+                <!-- HubSpot Form Embed -->
+            </div>
+        </div>
+        
+        <!-- Contact Info Box -->
+        <div class="contact-info-box">
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-content">
+                    <h4>Prefer Email?</h4>
+                    <p>Reach us directly at <a href="mailto:info@clariem.com">info@clariem.com</a></p>
+                </div>
+            </div>
+            <div class="contact-divider"></div>
+            <div class="contact-item">
+                <div class="contact-icon">💊</div>
+                <div class="contact-content">
+                    <h4>Pharma Launch Excellence</h4>
+                    <p>For pharmaceutical commercialization and launch excellence, visit <a href="http://www.launchcopilot.ai" target="_blank">Launch Copilot</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <span class="section-label">Questions & Answers</span>
+                <h2>Frequently Asked <span class="gold-highlight">Questions</span></h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How is Transform Copilot different from AI training programs?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We practice installation, not education. AI training programs teach you about AI and hope you'll apply what you learned. We configure working systems for your specific context—like getting a personal assistant who already knows your preferences, not attending a workshop. Our guaranteed outcomes approach means you get measurable time savings (5+ hours/week minimum), or we continue calibration at no additional cost until we get there.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What are Personal DNA and Business DNA?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Personal DNA captures how you naturally think and work—your communication style, cognitive preferences, and decision-making patterns. Business DNA maps your strategic context—priorities, stakeholder landscape, and operating rhythms. Together, they allow us to configure AI systems calibrated specifically for you, not generic prompts that supposedly work for everyone. This DNA-driven personalization is why our systems deliver sustained results where generic approaches fail.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What industries and company sizes do you work with?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We work primarily with Directors through VPs in large enterprises across industries. Our methodology is industry-agnostic—the AI Leadership Operating System applies whether you're in pharmaceuticals, technology, financial services, or manufacturing. What matters is your readiness for AI leadership transformation and commitment to measurable outcomes. Company size typically starts at mid-market and scales to Fortune 500.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do you guarantee time savings?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We start with a baseline time audit—measuring how you currently spend your time across key activities. As we install your AI operating system, we track time savings in each area. At 30-day verification, we document actual hours saved against the baseline. If you haven't achieved 5+ hours/week of verified time savings, we continue calibration at no additional cost until you do. Most leaders achieve 10+ hours/week, with some reaching 15+ hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What are the Five Tensions you help navigate?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>The Five Tensions are strategic trade-offs every AI leader must navigate: (1) Opportunity vs Focus—exploring possibilities vs delivering proven value; (2) Automation vs Humanity—AI efficiency vs human judgment and creativity; (3) Exploration vs Stability—rapid experimentation vs operational reliability; (4) Data vs Judgment—algorithmic decisions vs experiential wisdom; (5) Fragmentation vs Integration—scattered tools vs coherent ecosystem. There are no "right" answers—only contextual decisions that depend on your situation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Do you work with specific AI platforms?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Our methodology is platform-agnostic. We work with whatever AI tools your organization has access to—Claude, Microsoft Copilot, ChatGPT, or enterprise-specific solutions. The AI Leadership Operating System is about methodology and configuration, not specific technology. This means your investment in our approach survives platform changes and works within your existing IT governance framework.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What does a typical engagement look like?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Most engagements follow our 2-day → 30-day → 90-day model. The 2-day jumpstart establishes foundations, diagnoses your DNA, and builds first working systems. The 30-day bootcamp installs your complete operating system with weekly calibration. The 90-day momentum phase institutionalizes gains, extends to your team, and documents verified outcomes. Beyond formal engagement, you retain access to our LMS content library, leader community, and office hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What ongoing support do you provide?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Your relationship extends beyond formal engagement through multiple channels: LMS content library with curated assets, frameworks, and recorded sessions; leader community connecting you with peers on similar journeys; regular office hours for questions and troubleshooting; and context refresh sessions as your role or priorities evolve. The systems we build are designed to persist and improve over time, not require constant intervention.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What is the Value Capture Barrier?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>The Value Capture Barrier explains why most AI initiatives fail to deliver ROI—not because the technology doesn't work, but because organizations can't capture the value. Psychological undercurrents (fear, resistance, skepticism) combine with structural barriers (silos, misaligned incentives, rigid processes) to prevent adoption. Our approach specifically addresses these barriers through DNA-driven personalization, guaranteed outcomes, and systematic installation rather than education.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do you handle data security and compliance?</h3>
+                    <div class="faq-toggle">+</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We work within your existing IT governance and security frameworks. Our platform-agnostic approach means we configure AI tools you already have approved access to—no new systems that require IT review. For highly regulated industries, we help you develop governance frameworks that enable AI adoption while maintaining compliance. We never require access to sensitive data; instead, we teach you to configure systems that work with your information safely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="20251121_TClogo.jpg" alt="Transform Copilot">
+                </div>
+                <div class="footer-tagline">A Clariem Product</div>
+                <p class="footer-description">AI Leadership Operating System™ for enterprise leaders—your value delivery partner for AI transformation, making your job easier and saving you time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Why Transform Copilot</a></li>
+                    <li><a href="2-our-approach.html">Our Approach</a></li>
+                    <li><a href="3-offerings.html">Offerings</a></li>
+                    <li><a href="4-work-with-us.html">Work With Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Clariem Suite</h4>
+                <ul class="footer-links">
+                    <li><a href="http://www.launchcopilot.ai">Launch Copilot</a></li>
+                    <li><a href="http://www.clariem.com">About Clariem</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Clariem Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- HubSpot Form Script -->
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+    <script>
+        hbspt.forms.create({
+            region: "na1",
+            portalId: "7247302",
+            formId: "c5272b90-6088-4523-85b2-09ef7fa96e1f",
+            target: "#hubspot-form-container"
+        });
+    </script>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked FAQ if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('mobile-menu-open');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('nav')) {
+                        navMenu.classList.remove('mobile-menu-open');
+                    }
+                });
+                
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
