@@ -210,7 +210,7 @@
                 <div class="contact-icon">✉️</div>
                 <div class="contact-content">
                     <h4>Prefer Email?</h4>
-                    <p>Reach us directly at <a href="/cdn-cgi/l/email-protection#244d4a424b64474845564d41490a474b49"><span class="__cf_email__" data-cfemail="94fdfaf2fbd4f7f8f5e6fdf1f9baf7fbf9">[email&#160;protected]</span></a></p>
+                    <p>Reach us directly at <a href="mailto:info@clariem.com">info@clariem.com</a></p>
                 </div>
             </div>
             <div class="contact-divider"></div>
@@ -393,18 +393,8 @@
         </div>
     </footer>
 
-    <!-- HubSpot Form Script -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
     <script>
-        hbspt.forms.create({
-            region: "na1",
-            portalId: "7247302",
-            formId: "c5272b90-6088-4523-85b2-09ef7fa96e1f",
-            target: "#hubspot-form-container"
-        });
-    </script>
-
-    <script>
+        // FAQ Toggle functionality
         function toggleFAQ(element) {
             const faqItem = element.parentElement;
             const isActive = faqItem.classList.contains('active');
@@ -436,4 +426,30 @@
                     }
                 });
                 
-                navMenu.querySelectorAll('a').forEach(link =>
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('mobile-menu-open');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- HubSpot Form Script -->
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+    <script>
+        try {
+            if (typeof hbspt !== 'undefined') {
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7247302",
+                    formId: "c5272b90-6088-4523-85b2-09ef7fa96e1f",
+                    target: "#hubspot-form-container"
+                });
+            }
+        } catch (e) {
+            console.log('HubSpot form failed to load');
+        }
+    </script>
+</body>
+</html>
